@@ -1,0 +1,145 @@
+ronnie · Kandel/Südpfalz	ronnie · Kandel/Southern Palatinate
+cat ~/profil.txt	cat ~/profile.txt
+Umschulung  : Fachinformatiker AE (IHK), 2026–	Retraining : IT specialist, application development (IHK), 2026–
+Erfahrung   : 35 Jahre PC & Linux (privat), 11 Jahre Kundenkontakt	Experience : 35 years with PCs & Linux (personal), 11 years of customer contact
+Lernt gerade: Python, Web-Basics, Prompt Engineering	Learning   : Python, web basics, prompt engineering
+ls ~/gesucht/	ls ~/looking-for/
+praxisphase/  team-in-der-region/  erfahrene-entwickler/	work-placement/  local-team/  experienced-developers/
+./anfrage.sh --an smartcrm --ort kandel	./enquiry.sh --to smartcrm --location kandel
+>>> Freue mich auf ein Telefonat oder einen Kaffee vor Ort.	>>> Looking forward to a phone call or a coffee at your office.
+Der Ursprung: 640 KB reichen	The beginning: 640 KB is enough
+Alles begann auf einem 8086er: AUTOEXEC.BAT anpassen, CONFIG.SYS verstehen und eine Ampelkreuzung in BASIC programmieren. Hier lernte ich, Systeme nicht nur zu benutzen, sondern sie zu verstehen.	It all started on an 8086: tweaking AUTOEXEC.BAT, understanding CONFIG.SYS and programming traffic lights at a junction in BASIC. This is where I learned not just to use systems, but to understand them.
+freie:	free:
+verwendet	used
+>>> Startet …	>>> Starting …
+Ich bin root, ich darf das!	I am root — I can do that!
+Die erste Linux-Installation — CD brennen, Partitionen von Hand erstellen, kein Startmenü mehr. RPM, Bash und alles modular. Plötzlich war ich root.	My first Linux installation — burning a CD, creating partitions by hand, no more Start menu. RPM, Bash and everything modular. Suddenly, I was root.
+Partitionierung	Partitioning
+>>> LAMP-Stack läuft. Erster eigener Webserver. Root ist Verantwortung.	>>> LAMP stack running. My first web server. Root means responsibility.
+Der Kernel: Kompilieren als Meditation	The kernel: compiling as meditation
+USE-Flags feintunen, Kernel über Nacht bauen — Geduld als Tugend. Gentoo und Arch ließen mich das System von Grund auf verstehen, nicht nur bedienen.	Fine-tuning USE flags, building kernels overnight — patience as a virtue. Gentoo and Arch taught me to understand a system from the ground up, not just operate it.
+läuft ... 47%	running ... 47%
+>>> Kernel gebaut.	>>> Kernel built.
+Fokus auf Effizienz	A focus on efficiency
+Manjaro und CachyOS als tägliche Driver — optimierte Kernel, AUR, null Reibung. Das Tüftler-Gen bleibt, die Zeit fließt in Produktivität.	Manjaro and CachyOS as daily drivers — optimised kernels, AUR, zero friction. The urge to tinker remains, but my time goes into productivity.
+pamac upgrade — null Reibung, voller Flow	pamac upgrade — zero friction, full flow
+Der Wendepunkt: Künstliche Intelligenz	The turning point: artificial intelligence
+Als ich die erste Antwort von einer künstlichen Intelligenz bekam, war mir sofort klar: DAS wird ein Meilenstein der Geschichte werden, der vieles verändern wird. Für mich hieß es erst einmal: Endlich kann ich die vielen Ideen umsetzen, die ich jahrelang hatte.	When I received my first answer from an artificial intelligence, I knew immediately: THIS would be a historic milestone that would change a great deal. For me, the first thought was: at last I can bring to life the many ideas I have had for years.
+Automatisierung	Automation
+Ideenumsetzung	Bringing ideas to life
+Hello, AI — der Moment, der alles veränderte	Hello, AI — the moment that changed everything
+name:'Fachinformatik'	name:'Professional IT'
+Die Zukunft: Anwendungsentwicklung	The future: application development
+Umschulung zum Fachinformatiker (IHK): Endlich die Leidenschaft und Kenntnisse zum Beruf machen.	Retraining as an IT specialist (IHK): finally turning my passion and knowledge into a career.
+CRM-Prozesse	CRM processes
+while True: lernen()  # läuft stabil	while True: learn()  # running smoothly
+Kundennr.	Customer no.
+source:'Firma'	source:'Company'
+Ansprechpartner	Contact person
+Excel-Ablösung dringend	Urgent need to replace Excel
+Freitext	Free text
+— nicht importieren —	— do not import —
+Kundennummer	Customer number
+Firmenname *	Company name *
+Externe ERP-ID *	External ERP ID *
+'Notiz'	'Note'
+'Branche'	'Industry'
+automatisch zugeordnet	automatically mapped
+noch nicht geprüft	not yet checked
+Pflichtfelder fehlen:	Required fields missing:
+Zielfeld doppelt belegt:	Target field mapped more than once:
+Mapping unvollständig	Mapping incomplete
+Schema vollständig · Datentypen kompatibel	Schema complete · Data types compatible
+Zeile 3: E-Mail-Format ungültig	Row 3: invalid email format
+Zeile 4: mögliche Dublette zu ERP-8821	Row 4: possible duplicate of ERP-8821
+bereit zum Testimport	ready for test import
+</span> läuft	</span> running
+Normalisierung gestartet …	Normalisation started …
+-> angelegt	-> created
+-> zurückgestellt: E-Mail prüfen	-> held for review: check email
+-> Dublette übersprungen	-> duplicate skipped
+Transaktion abgeschlossen · Rollback verfügbar	Transaction complete · Rollback available
+Testimport Ergebnis	Test import results
+>angelegt<	>created<
+>prüfen<	>review<
+>Dublette<	>duplicate<
+</span> abgeschlossen	</span> complete
+# Feldnamen semantisch zugeordnet. Bitte Mapping prüfen.	# Field names mapped semantically. Please validate the mapping.
+# Warte auf Feldzuordnung …	# Waiting for field mapping …
+erp_kunden_export.csv	erp_customers_export.csv
+SMARTCRM / Firmen & Kontakte	SMARTCRM / Companies & Contacts
+</span> bereit	</span> ready
+„Wir wachsen stark, arbeiten aber noch mit Excel-Listen. Der Vertrieb braucht dringend Struktur."	“We are growing fast, but still work with Excel spreadsheets. Our sales team urgently needs structure.”
+Heute anrufen: Excel → CRM ist ein akuter Schmerzpunkt. Demo mit Import-Assistent anbieten.	Call today: moving from Excel to CRM is an urgent pain point. Offer a demo with the import wizard.
+Pricing-Seite 3× besucht, letzte E-Mail 2× geöffnet — aber noch keine direkte Anfrage gestellt.	Visited the pricing page 3×, opened the latest email 2× — but has not yet made a direct enquiry.
+Nurturing: Case-Study aus dem Maschinenbau senden, Follow-up in 7 Tagen einplanen.	Nurture: send a case study from mechanical engineering and schedule a follow-up in 7 days.
+Altes System läuft aus, Vertrag endet in 3 Monaten. Zeitdruck und Budget noch unklar.	Legacy system is being phased out; contract ends in 3 months. Urgency and budget are still unclear.
+Qualifizieren: Rückruftermin vorschlagen, Budget & Zeitrahmen erfragen — sonst Wiedervorlage Q3.	Qualify: suggest a callback, ask about budget and timing — otherwise schedule a Q3 follow-up.
+KALT	COLD
+Nächster Schritt ·	Next step ·
+Analysiere Signale …	Analysing signals …
+wartet auf Analyse …	waiting for analysis …
+// bereit — 3 Leads im CRM-Pool	// ready — 3 leads in the CRM pool
+analysiere lead	analysing lead
+ · extrahiere kaufsignale …	 · extracting buying signals …
+fertig in 2.4s — 1× HOT · 1× WARM · 1×	done in 2.4s — 1× HOT · 1× WARM · 1×
+KI analysiert …	AI is analysing …
+Mit KI analysieren	Analyse with AI
+// antwort in	// response in
+s · kontext:	s · context:
+// session beendet · 5/5 fragen · dankeschön	// session complete · 5/5 questions · thank you
+text-ember">F'	text-ember">Q'
+Kundenorientierung als Kompass	Customer focus as a compass
+SMARTCRM macht den Arbeitsalltag seiner Kunden einfacher und effizienter — nicht mehr Features, sondern weniger Reibung. Nach über einem Jahrzehnt an der Ladentheke weiß ich genau, wo diese Reibung sitzt.	SMARTCRM makes its customers’ daily work easier and more efficient — not more features, but less friction. After more than a decade behind the counter, I know exactly where that friction is.
+Ich kenne beide Seiten: den Nutzer an der Kasse und den Admin im System.	I know both sides: the user at the till and the admin in the system.
+Partner auf Augenhöhe — vom Mittelstand für den Mittelstand	Partners on equal terms — by SMEs, for SMEs
+Keine anonyme Software-Fabrik, sondern persönliche Betreuung und langfristige Zusammenarbeit. Das „Du" und die offene Tür sind kein Marketing, sondern eine Einstellung.	Not an anonymous software factory, but personal support and long-term collaboration. First-name terms and an open door are not marketing — they reflect a mindset.
+Ich schätze diese Philosophie zutiefst: Zusammenarbeit funktioniert am besten, wenn man auf Augenhöhe miteinander redet und gemeinsam Lösungen baut.	I deeply value this philosophy: collaboration works best when people talk as equals and build solutions together.
+Individuelle Lösungen statt starrer Standardsoftware	Custom solutions rather than rigid off-the-shelf software
+Das CRM wird an Prozesse, Strukturen und Anforderungen des Unternehmens angepasst — nicht umgekehrt. Dafür braucht es Entwickler, die zuhören und konfigurieren können.	The CRM is adapted to the company’s processes, structures and requirements — not the other way around. That takes developers who can listen and configure.
+Mein Linux-Weg (Gentoo-USE-Flags bis AUR) war viele Jahre Training in „Software an den Nutzer anpassen".	My Linux journey, from Gentoo USE flags to AUR, has been years of practice in adapting software to the user.
+Flexibilität & Integration	Flexibility & integration
+SMARTCRM fügt sich in bestehende IT-Landschaften ein — ERP, DMS, Schnittstellen. Ein CRM ist stark, wenn es kein Inseldasein führt.	SMARTCRM fits into existing IT environments — ERP, DMS and interfaces. A CRM is powerful when it does not operate in isolation.
+APIs, Datenformate, Systemgrenzen — genau diese Themen treibe ich in meiner Umschulung aktiv voran.	APIs, data formats, system boundaries — these are precisely the topics I am actively pursuing in my retraining.
+Praxisnähe: die eigene Software selbst nutzen	Hands-on experience: using your own software
+Wer sein eigenes Produkt im Alltag benutzt, merkt sofort, was klemmt. Erfahrungen aus dem echten Betrieb fließen direkt in die Weiterentwicklung.	People who use their own product every day immediately notice what is not working. Experience from real operations feeds directly into further development.
+Ehrliche Software entsteht in der Praxis. Ich teste gründlich, was ich baue — auf meinem eigenen Rechner und unter realen Bedingungen.	Honest software comes from real-world practice. I thoroughly test what I build — on my own machine and under real conditions.
+Qualität ohne unnötige Komplexität	Quality without unnecessary complexity
+Prozesse vereinfachen, Aufwand reduzieren, bedienbar bleiben. „Agil, professionell, partnerschaftlich" heißt auch: kein Over-Engineering, sondern Lösungen, die tragen.	Simplify processes, reduce effort and stay usable. “Agile, professional, collaborative” also means avoiding over-engineering and building solutions that last.
+Keine unlesbaren Monster-Skripte, sondern sauberer Code: Ich freue mich darauf, hier die wahre Power von Python im professionellen Einsatz zu nutzen.	No unreadable monster scripts, just clean code: I look forward to harnessing the real power of Python in a professional setting here.
+'Adresse'	'Address'
+'Telefon'	'Phone'
+'Geburtsdatum'	'Date of birth'
+'28.04.1979'	'28 April 1979'
+IHK-Umschulung Fachinformatiker Anwendungsentwicklung	IHK retraining: IT specialist in application development
+IHK-geprüfte Umschulung mit Abschluss Fachinformatiker für Anwendungsentwicklung	IHK-certified retraining leading to qualification as an IT specialist in application development
+Erste 6 Monate gemeinsam mit SysAdmin-Fundament (AP1-Vorbereitung)	First 6 months include a shared system administration foundation (AP1 exam preparation)
+Schwerpunkte: Python, Web-Entwicklung (HTML/JS/CSS), Datenbanken, Schnittstellendesign	Focus: Python, web development (HTML/JS/CSS), databases and interface design
+'Verkäufer'	'Sales assistant'
+Kundenberatung, Bedarfsanalyse und kaufmännische Abwicklung (u.a. Boom-Jahre 2016/17)	Customer advice, needs analysis and sales administration (including the 2016/17 boom years)
+Stressresistent bei hoher Kundenfrequenz und schnellem Marktwachstum	Resilient under heavy customer traffic and rapid market growth
+'Restaurantleiter'	'Restaurant manager'
+Teamführung, Schichtplanung und Priorisierung unter Volllast (Gastro-Sonntage)	Team leadership, shift planning and prioritisation at peak capacity (busy Sundays in hospitality)
+Verantwortung für Kassenführung, Bargeld und Kundenservice mit unendlicher Geduld	Responsible for tills, cash handling and customer service with endless patience
+'Sozialversicherungsfachangestellter'	'Social insurance administrator'
+Bearbeitung von Anträgen und Anfragen im Sozialversicherungsbereich	Processing social insurance applications and enquiries
+Universität Landau-Koblenz	University of Landau-Koblenz
+Lehramt für Grund- und Hauptschulen (ohne Abschluss — gescheitert am analogen Universitätsapparat, keine Ausreden)	Primary and lower-secondary teacher training (no degree — struggled with the paper-based university system, no excuses)
+Universität Mannheim	University of Mannheim
+Sozialwissenschaften (ohne Abschluss — nach 1. Semester Reißleine gezogen wegen schlechter Perspektiven)	Social sciences (no degree — left after the first semester due to poor career prospects)
+Speyer-Kolleg (heute Pfalz-Kolleg)	Speyer-Kolleg (now Pfalz-Kolleg)
+'Abitur'	'Abitur (German university entrance qualification)'
+Ausbildung als Sozialversicherungsfachangestellter	Vocational training as a social insurance administrator
+Außerordentliche Computerkenntnisse	Outstanding computer skills
+Kundenorientierung und Kommunikationsfähigkeit	Customer focus and communication skills
+'Organisation'	'Organisation'
+— kein Abschluss, aber reichlich Hintergrund für Menschen & Systeme.	— no degree, but plenty of insight into people & systems.
+E-Mail	Email
+Praktikum%20bei%20SMARTCRM	Internship%20at%20SMARTCRM
+Terminal neu abspielen	Replay terminal
+Mein Bezug:	My connection:
+>STATION	>MILESTONE
+regionalbezug.md	local-connection.md
+cv.tex §bildung · lebenslauf.md	cv.tex §education · cv.md
+cv.tex §erfahrung · softskills.yml	cv.tex §experience · softskills.yml
+selbstauskunft.yml	self-assessment.yml

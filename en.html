@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Application for an internship as an IT specialist in application development at Smart-CRM in Kandel — Python, prompt engineering and 20+ years of Linux DNA." name="description"/>
+<link href="./index.html" hreflang="de" rel="alternate"/>
+<link href="./en.html" hreflang="en" rel="alternate"/>
+<title>Ronnie Kuntz · Internship application @ SMARTCRM</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            body: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            cream: '#EFF6FC',
+            paper: '#DFEAF5',
+            card: '#FAFCFE',
+            line: '#B8CCE2',
+            ink: '#16314D',
+            'ink-2': '#3F6289',
+            'ink-3': '#7A94AF',
+            ember: '#1565C0',
+            gold: '#42A5F5',
+            moss: '#2E7D32',
+            term: '#0B1826',
+            'term-2': '#11213A',
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    :root {
+      --color-cream: #EFF6FC;
+      --color-paper: #DFEAF5;
+      --color-card: #FAFCFE;
+      --color-line: #B8CCE2;
+      --color-ink: #16314D;
+      --color-ink-2: #3F6289;
+      --color-ink-3: #7A94AF;
+      --color-ember: #1565C0;
+      --color-gold: #42A5F5;
+      --color-moss: #2E7D32;
+      --color-term: #0B1826;
+      --color-term-2: #11213A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-cream); color: var(--color-ink); font-family: '"IBM Plex Sans"', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    section { scroll-margin-top: 92px; }
+    ::selection { background: var(--color-ember); color: var(--color-cream); }
+
+    .hl { background-image: linear-gradient(transparent 62%, rgba(21,101,192,0.28) 62%); }
+    .hl-gold { background-image: linear-gradient(transparent 62%, rgba(66,165,245,0.28) 62%); }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.is-in { opacity: 1; transform: translateY(0); }
+
+    @keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+    .cursor { animation: blink 1.05s step-end infinite; }
+    @keyframes rise { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+    .animate-rise { animation: rise .5s cubic-bezier(.22,1,.36,1) both; }
+    @keyframes bob { 0%,100%{transform:translateY(0) rotate(-3deg);} 50%{transform:translateY(-9px) rotate(-3deg);} }
+    .animate-bob { animation: bob 4.5s ease-in-out infinite; }
+    @keyframes kenburns { 0%{transform:scale(1) translate(0,0);} 100%{transform:scale(1.12) translate(2%, -2%);} }
+    .animate-kenburns { animation: kenburns 9s ease-in-out infinite alternate; }
+    @keyframes bar-grow { from{transform:scaleX(0);} to{transform:scaleX(1);} }
+    .animate-bar { transform-origin: left center; animation: bar-grow .8s cubic-bezier(.22,1,.36,1) both; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-25%);} }
+    .animate-bounce { animation: bounce 1.4s infinite; }
+    @keyframes ping { 75%,100%{transform:scale(2);opacity:0;} }
+    .animate-ping { animation: ping 1.4s cubic-bezier(0,0,.2,1) infinite; }
+    @keyframes spin { to{transform:rotate(360deg);} }
+    .animate-spin { animation: spin 1s linear infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+    .scanlines { position: relative; }
+    .scanlines::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 3px);
+    }
+
+    .ambient {
+      background-image:
+        linear-gradient(rgba(22,49,77,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,49,77,0.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+    }
+    .noise {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.55'/></svg>");
+    }
+
+    input[type="range"].slider {
+      -webkit-appearance: none; appearance: none; width: 100%; height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1565C0 0%, #1565C0 var(--fill, 50%), #d1dfed var(--fill, 50%), #d1dfed 100%);
+      outline: none;
+    }
+    input[type="range"].slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; width: 21px; height: 21px;
+      background: #FAFCFE; border: 3px solid #16314D; border-radius: 5px;
+      box-shadow: 2px 2px 0 #16314D; cursor: grab; transition: transform .15s ease;
+    }
+    input[type="range"].slider::-webkit-slider-thumb:hover { transform: scale(1.12); }
+    input[type="range"].slider:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(1.05); }
+    input[type="range"].slider::-moz-range-thumb {
+      width: 16px; height: 16px; background: #FAFCFE; border: 3px solid #16314D;
+      border-radius: 5px; box-shadow: 2px 2px 0 #16314D; cursor: grab;
+    }
+    input[type="range"].slider::-moz-range-track { height: 8px; border-radius: 999px; background: #e9e0ce; }
+    input[type="range"].slider::-moz-range-progress { height: 8px; border-radius: 999px; background: #1565C0; }
+
+    ::-webkit-scrollbar { width: 11px; }
+    ::-webkit-scrollbar-track { background: #f5efe2; }
+    ::-webkit-scrollbar-thumb { background: #cfc5ab; border: 3px solid #f5efe2; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1565C0; }
+
+    .mobile-menu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .mobile-menu.open { max-height: 620px; }
+
+    /* Retro-Shadow-Utilities (ersetzen hardcoded Hex-Werte via JS) */
+    .sh-ink     { box-shadow: 3px 3px 0 var(--color-ink); }
+    .sh-ink-md  { box-shadow: 4px 4px 0 var(--color-ink); }
+    .sh-ink-lg  { box-shadow: 5px 5px 0 var(--color-ink); }
+    .sh-ink-xs  { box-shadow: 2px 2px 0 var(--color-ink); }
+    .sh-line    { box-shadow: 8px 8px 0 var(--color-line); }
+    .sh-line-xs { box-shadow: 3px 3px 0 var(--color-line); }
+    .sh-line-md { box-shadow: 4px 4px 0 var(--color-line); }
+    .sh-ember     { box-shadow: 4px 4px 0 var(--color-ember); }
+    .sh-ember-lg  { box-shadow: 6px 6px 0 var(--color-ember); }
+    .sh-ember-xs  { box-shadow: 2px 2px 0 var(--color-ember); }
+    .sh-gold      { box-shadow: 4px 4px 0 var(--color-gold); }
+    .sh-gold-lg   { box-shadow: 6px 6px 0 var(--color-gold); }
+    .sh-terminal  { box-shadow: 10px 10px 0 rgba(22,49,77,0.12); }
+    .sh-nav       { box-shadow: 0 2px 20px rgba(22,49,77,0.06); }
+    .hover\:sh-ember-lg:hover  { box-shadow: 6px 6px 0 var(--color-ember); }
+    .hover\:sh-ember-xs:hover  { box-shadow: 2px 2px 0 var(--color-ember); }
+    .active\:sh-ember-xs:active { box-shadow: 2px 2px 0 var(--color-ember); }
+    .hover\:sh-ink-lg:hover    { box-shadow: 5px 5px 0 var(--color-ink); }
+    .active\:sh-ink-xs:active  { box-shadow: 2px 2px 0 var(--color-ink); }
+    .hover\:sh-gold:hover      { box-shadow: 4px 4px 0 var(--color-gold); }
+    .hover\:sh-gold-lg:hover   { box-shadow: 6px 6px 0 var(--color-gold); }
+
+    /* KI-Chat: Typing-Indikator */
+    .typing-dot { animation: typing-bounce 1s ease-in-out infinite; }
+    .typing-dot:nth-child(2) { animation-delay: .15s; }
+    .typing-dot:nth-child(3) { animation-delay: .3s; }
+    @keyframes typing-bounce { 0%,60%,100% { transform: translateY(0); opacity:.35; } 30% { transform: translateY(-5px); opacity:1; } }
+
+    .grid > * { min-width: 0; }
+    @media (max-width:639px) { main { overflow-wrap:anywhere; } #kontakt .scanlines > div:first-child { flex-wrap:wrap; gap:8px; } }
+    /* Always-visible, keyboard-accessible language navigation. */
+    .header-actions { display:flex; align-items:center; gap:12px; flex-shrink:0; margin-left:12px; }
+    .language-switch { display:flex; border:2px solid var(--color-ink); border-radius:6px; background:var(--color-card); box-shadow:2px 2px 0 var(--color-ink); }
+    .language-switch a { display:flex; min-width:40px; min-height:40px; align-items:center; justify-content:center; font:700 12px 'JetBrains Mono',monospace; text-decoration:none; color:var(--color-ink); }
+    .language-switch a[aria-current="page"] { background:var(--color-ink); color:var(--color-cream); }
+    .language-switch a:hover { background:var(--color-ember); color:white; }
+    .language-switch a:focus-visible { outline:3px solid var(--color-gold); outline-offset:4px; }
+    @media (max-width:380px) { #nav > .mx-auto { padding-left:12px; padding-right:12px; } .header-actions { gap:8px; margin-left:8px; } #nav > .mx-auto > a { gap:6px; } }
+  </style>
+</head>
+<body class="bg-cream text-ink">
+<div aria-hidden="" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+<div class="ambient absolute inset-0"></div>
+<div class="absolute -top-40 -left-40 h-[560px] w-[560px] rounded-full" style="background:radial-gradient(circle,rgba(66,165,245,0.14),transparent 65%)"></div>
+<div class="absolute top-1/3 -right-48 h-[620px] w-[620px] rounded-full" style="background:radial-gradient(circle,rgba(21,101,192,0.11),transparent 65%)"></div>
+<div class="absolute -bottom-52 left-1/4 h-[520px] w-[520px] rounded-full" style="background:radial-gradient(circle,rgba(66,165,245,0.10),transparent 65%)"></div>
+<div class="noise absolute inset-0 opacity-[0.05] mix-blend-multiply"></div>
+</div>
+<header class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-cream/60 backdrop-blur-sm transition-all duration-300" id="nav">
+<div class="absolute top-0 left-0 h-[3px] bg-ember transition-[width] duration-150 ease-out" id="nav-progress" style="width:0%"></div>
+<div class="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3.5 sm:px-8">
+<a class="group flex items-center gap-2.5" href="#top">
+<span class="flex h-9 w-9 items-center justify-center rounded-md border-2 border-ink bg-ink font-mono text-sm font-bold text-cream transition-colors group-hover:bg-ember group-hover:border-ember">~$</span>
+<span class="font-display text-[17px] font-bold tracking-tight">ronnie<span class="text-ember">.</span>kuntz<span class="cursor ml-0.5 inline-block h-[13px] w-[7px] translate-y-[1px] bg-ember"></span></span>
+</a>
+<nav class="hidden items-center gap-4 min-[1400px]:flex">
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#steckbrief"><span class="text-ember/70">./</span>Profile<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#evolution"><span class="text-ember/70">./</span>IT evolution<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#lebenslauf"><span class="text-ember/70">./</span>CV<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#demos"><span class="text-ember/70">./</span>Demos<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#warum"><span class="text-ember/70">./</span>Why SMARTCRM?<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#chat"><span class="text-ember/70">./</span>AI chat<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#persoenliches"><span class="text-ember/70">./</span>About me<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="group relative font-mono text-[13px] font-medium text-ink-2 transition-colors hover:text-ink" href="#kontakt"><span class="text-ember/70">./</span>Contact<span class="absolute -bottom-1 left-0 h-[2px] w-0 bg-ember transition-all duration-300 group-hover:w-full"></span></a>
+<a class="inline-flex items-center gap-1.5 rounded-md border-2 border-ink bg-gold px-4 py-2 font-mono text-[13px] font-bold text-ink shadow-[3px_3px_0_#22252a] transition-all hover:-translate-y-0.5 hover:bg-ember hover:text-cream hover:shadow-[5px_5px_0_#22252a] active:translate-y-0 active:shadow-[2px_2px_0_#22252a]" href="#kontakt">Open to work <span class="h-3.5 w-3.5" data-lucide="arrow-up-right"></span></a>
+</nav>
+<div class="header-actions">
+<nav aria-label="Choose language" class="language-switch">
+<a data-language="de" href="./index.html" hreflang="de" lang="de" title="Deutsch">DE</a>
+<a aria-current="page" data-language="en" href="./en.html" hreflang="en" lang="en" title="English">EN</a>
+</nav>
+<button aria-label="Toggle menu" class="rounded-md border-2 border-ink bg-card p-2 shadow-[3px_3px_0_#22252a] transition-transform active:translate-y-0.5 active:shadow-none min-[1400px]:hidden" id="menu-toggle">
+<span class="h-5 w-5" data-lucide="menu" id="icon-menu"></span>
+<span class="hidden h-5 w-5" data-lucide="x" id="icon-x"></span>
+</button>
+</div>
+</div>
+<nav class="mobile-menu border-t border-line bg-cream px-5 min-[1400px]:hidden" id="mobile-menu">
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#steckbrief">Profile <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#evolution">IT evolution <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#lebenslauf">CV <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#demos">Demos <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#warum">Why SMARTCRM? <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#chat">AI chat <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between border-b border-line py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#persoenliches">Personal interests <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="flex items-center justify-between py-3.5 font-display text-lg font-semibold text-ink transition-colors hover:text-ember" href="#kontakt">Contact <span class="font-mono text-xs text-ink-3">→</span></a>
+<a class="mt-4 mb-5 flex items-center justify-center gap-2 rounded-md border-2 border-ink bg-ember px-4 py-3 font-mono text-sm font-bold text-cream shadow-[3px_3px_0_#22252a]" href="#kontakt">Open to work <span class="h-4 w-4" data-lucide="arrow-up-right"></span></a>
+</nav>
+</header>
+<main>
+<section class="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24" id="top">
+<div class="pointer-events-none absolute top-24 right-[-140px] hidden h-72 w-72 rotate-12 rounded-full border-2 border-dashed border-gold/40 lg:block"></div>
+<div class="pointer-events-none absolute bottom-8 left-[-90px] hidden h-48 w-48 -rotate-6 rounded-full border-2 border-dashed border-ember/30 lg:block"></div>
+<div class="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
+<div class="lg:col-span-7">
+<div class="reveal is-in">
+<p class="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-card px-3.5 py-1.5 font-mono text-[11px] font-medium tracking-wide text-ink-2 shadow-[3px_3px_0_#e7dfcd] sm:text-xs">
+<span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ember opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-ember"></span></span>
+              Application · Software development internship · SMARTCRM, Kandel
+            </p>
+</div>
+<!-- Anschreiben als Briefkarte -->
+<div class="reveal is-in mt-7" style="transition-delay:.1s">
+<article class="relative overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2]">
+<div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink bg-paper px-6 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-ink-2 uppercase"><span class="text-ember">▸</span> cover-letter.txt</p>
+<p class="font-mono text-[10.5px] text-ink-3">Kandel · Southern Palatinate</p>
+</div>
+<div class="px-6 py-7 sm:px-9 sm:py-8">
+<h1 class="font-display text-[1.7rem] leading-[1.15] font-bold tracking-tight text-ink sm:text-[2.1rem]">
+                  Hi Nadine, hello <span class="hl">SMARTCRM team</span>!
+                </h1>
+<div class="mt-5 space-y-4 text-[15px] leading-relaxed text-ink-2 sm:text-base">
+<p>Thanks for stopping by. My name is <strong class="font-semibold text-ink">Ronnie Kuntz</strong> and I would love to work for you free of charge! Since January, I have been retraining as an IT specialist in application development. I am an AI enthusiast and a Linux user by conviction.</p>
+<p>For the practical phase of my training, I am looking for a local team where I can contribute my existing knowledge and learn from experienced developers.</p>
+<p>Feel free to explore my demos, try the AI assistant or take a look at my background. If you think we might be a good fit, I would love to have a quick phone call or a coffee at your office!</p>
+</div>
+<!-- Unterschrift -->
+<div class="mt-7 border-t-2 border-dashed border-line pt-5">
+<p class="font-mono text-[11px] text-ink-3">Best wishes</p>
+<div class="mt-2 flex flex-wrap items-end gap-4">
+<div class="relative">
+<img alt="Ronnie Kuntz’s signature" class="h-[60px] w-auto object-contain" src="./img/signatur.png"/>
+</div>
+<div class="pb-1">
+<p class="font-display text-[17px] font-bold tracking-tight text-ink">Ronnie Kuntz</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<div class="reveal is-in mt-8" style="transition-delay:.25s">
+<div class="flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-ink px-6 py-3.5 font-display text-[15px] font-semibold text-cream shadow-[4px_4px_0_#42A5F5] transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-none" href="#demos">
+                Explore the demos <span class="h-4 w-4 text-gold" data-lucide="arrow-right"></span>
+</a>
+<a class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-card px-6 py-3.5 font-display text-[15px] font-semibold text-ink shadow-[4px_4px_0_#B8CCE2] transition-all hover:-translate-y-0.5 hover:bg-paper active:translate-y-0 active:shadow-none" href="#chat">
+<span class="h-4 w-4 text-ember" data-lucide="sparkles"></span> Try the AI assistant
+              </a>
+<a class="group inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-ink-2 transition-colors hover:text-ember" href="#kontakt">
+                Contact <span class="h-4 w-4 transition-transform group-hover:translate-x-1" data-lucide="arrow-right"></span>
+</a>
+</div>
+</div>
+<div class="reveal is-in mt-9" style="transition-delay:.35s">
+<div class="flex flex-wrap gap-x-8 gap-y-2 border-t-2 border-dashed border-line pt-5 font-mono text-xs text-ink-3">
+<span><span class="text-gold">IHK</span> retraining in application development</span>
+<span><span class="text-gold">Python</span> · Linux · Prompting</span>
+<span class="inline-flex items-center gap-1"><span class="h-3.5 w-3.5 text-gold" data-lucide="map-pin"></span> Kandel / Southern Palatinate area</span>
+</div>
+</div>
+</div>
+<div class="relative lg:col-span-5">
+<div class="reveal is-in relative" style="transition-delay:.25s">
+<div class="scanlines overflow-hidden rounded-xl border-2 border-ink bg-term shadow-[10px_10px_0_rgba(34,37,42,0.12)]" id="terminal">
+<div class="flex items-center justify-between border-b border-white/10 bg-term-2 px-4 py-2.5">
+<div class="flex items-center gap-2">
+<span class="h-3 w-3 rounded-full border border-ink bg-ember"></span>
+<span class="h-3 w-3 rounded-full border border-ink bg-gold"></span>
+<span class="h-3 w-3 rounded-full border border-ink bg-moss"></span>
+</div>
+<p class="font-mono text-[11px] tracking-wide text-cream/50">ronnie@kandel: ~/application</p>
+<button aria-label="Restart terminal" class="rounded p-1 text-cream/40 transition-colors hover:bg-white/10 hover:text-ember" id="terminal-restart" title="Replay">
+<span class="h-3.5 w-3.5" data-lucide="rotate-ccw"></span>
+</button>
+</div>
+<div class="h-[318px] overflow-y-auto px-4 py-4 font-mono text-[12.5px] leading-[1.75] text-cream/85 sm:h-[330px] sm:text-[13px]" id="terminal-body"></div>
+</div>
+<div class="animate-bob absolute -bottom-5 -left-4 rounded-md border-2 border-ink bg-ember px-4 py-2 font-mono text-xs font-bold text-cream shadow-[4px_4px_0_#22252a] sm:-left-6">open to a conversation</div>
+<div class="absolute -top-4 -right-3 rotate-3 rounded-md border-2 border-ink bg-gold px-3 py-1.5 font-mono text-[11px] font-bold text-ink shadow-[3px_3px_0_#22252a]">~/work-placement</div>
+</div>
+</div>
+</div>
+<div class="mt-16 flex justify-center lg:mt-20">
+<a aria-label="Scroll to profile" class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink/25 text-ink-3 transition-all hover:border-ember hover:text-ember" href="#steckbrief">
+<span class="h-5 w-5 animate-bounce" data-lucide="arrow-down"></span>
+</a>
+</div>
+</section>
+<section class="relative py-16 sm:py-20" id="steckbrief">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 00 · Profile <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.5rem]">At a <span class="hl">glance</span>.</h2>
+<p class="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-2">the essentials, in a nutshell.</p>
+</div>
+<div class="reveal is-in mt-8 grid gap-6 lg:grid-cols-[240px_1fr]" style="transition-delay:.1s">
+<!-- Foto-Karte -->
+<div class="flex flex-col gap-3">
+<div class="relative aspect-[4/5] overflow-hidden rounded-xl border-2 border-ink bg-paper shadow-[6px_6px_0_#B8CCE2]">
+<!-- Profil-Illustration -->
+<svg aria-hidden="true" class="h-full w-full text-ink-3" fill="none" viewbox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="250" opacity="0.06" width="200"></rect>
+<circle cx="100" cy="92" fill="currentColor" opacity="0.28" r="34"></circle>
+<path d="M40 240 C 40 175 160 175 160 240 Z" fill="currentColor" opacity="0.28"></path>
+</svg>
+</div>
+<div class="rounded-xl border-2 border-ink bg-ink px-4 py-3 text-center shadow-[3px_3px_0_#42A5F5]">
+<p class="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-cream/40"></p>
+<p class="mt-1 font-display text-[13px] font-semibold leading-tight text-cream">Understand → Build → Test → Improve</p>
+</div>
+</div>
+<!-- Info-Karte -->
+<div class="rounded-xl border-2 border-ink bg-card shadow-[6px_6px_0_#B8CCE2]">
+<div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink bg-paper px-5 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-ink-2 uppercase"><span class="text-ember">▸</span> profile.yml</p>
+<span class="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-moss"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-moss"></span> available</span>
+</div>
+<div class="grid gap-6 px-5 py-5 sm:px-7 md:grid-cols-[1.35fr_1fr]">
+<div>
+<p class="font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-3">Applicant</p>
+<p class="mt-1.5 font-display text-2xl font-bold tracking-tight text-ink sm:text-[1.65rem]">Ronnie Kuntz</p>
+<p class="mt-1 text-[14px] leading-snug text-ink-2">Retraining as an <span class="font-semibold text-ember">IT specialist in application development</span> (IHK) · Internship application</p>
+<ul class="mt-5 space-y-2.5 font-mono text-[12.5px] text-ink-2">
+<li class="flex items-center gap-3"><span class="h-4 w-4 shrink-0 text-ember" data-lucide="user"></span><span><span class="text-ink-3">age</span>: <span class="font-bold text-ink">47</span> · <span class="text-ink-3">status</span>: retraining 2026–2028</span></li>
+<li class="flex items-center gap-3"><span class="h-4 w-4 shrink-0 text-ember" data-lucide="map-pin"></span><span><span class="text-ink-3">location</span>: Saarstr. 41a · 76870 Kandel</span></li>
+<li class="flex items-center gap-3"><span class="h-4 w-4 shrink-0 text-ember" data-lucide="calendar-check-2"></span><span><span class="text-ink-3">internship_start</span>: <span class="font-bold text-ink">April 2027</span></span></li>
+</ul>
+</div>
+<div>
+<p class="font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-3">Profile · Key figures</p>
+<div class="mt-2 grid grid-cols-2 gap-2.5">
+<div class="rounded-md border-2 border-line bg-cream px-3 py-2.5"><p class="font-display text-2xl font-bold tabular-nums text-ember">35</p><p class="font-mono text-[9.5px] uppercase tracking-wider text-ink-3">years with PCs</p></div>
+<div class="rounded-md border-2 border-line bg-cream px-3 py-2.5"><p class="font-display text-2xl font-bold tabular-nums text-ember">13</p><p class="font-mono text-[9.5px] uppercase tracking-wider text-ink-3">years of customer contact</p></div>
+<div class="rounded-md border-2 border-line bg-cream px-3 py-2.5"><p class="font-display text-2xl font-bold tabular-nums text-gold">IHK</p><p class="font-mono text-[9.5px] uppercase tracking-wider text-ink-3">Development retraining</p></div>
+<div class="rounded-md border-2 border-line bg-cream px-3 py-2.5"><p class="font-display text-2xl font-bold tabular-nums text-gold">100%</p><p class="font-mono text-[9.5px] uppercase tracking-wider text-ink-3">Focus &amp; commitment</p></div>
+</div>
+<p class="mt-4 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink-3">Toolkit</p>
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">Python</span>
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">Java</span>
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">HTML · JS · CSS</span>
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">Prompt Engineering</span>
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">Troubleshooting</span>
+<span class="rounded border border-ink/20 bg-paper px-2 py-1 font-mono text-[10.5px] text-ink-2">Customer communication</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-3 border-t-2 border-dashed border-line px-5 py-4 sm:px-7">
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="evolution">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 01 · A different take on my CV <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">My <span class="hl">IT evolution</span> — from C:&gt; to professional IT.</h2>
+<p class="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg">Click through the milestones — there is a story behind every one.</p>
+</div>
+<div class="reveal is-in mt-14" style="transition-delay:.15s">
+<div class="relative mt-14">
+<div class="absolute top-[21px] right-[6%] left-[6%] hidden h-[2px] bg-line md:block"></div>
+<div class="absolute top-2 bottom-2 left-[21px] w-[2px] bg-line md:hidden"></div>
+<div class="grid gap-5 md:grid-cols-6 md:gap-1.5" id="timeline-buttons"></div>
+</div>
+</div>
+<div class="reveal is-in mt-12" style="transition-delay:.25s">
+<div class="animate-rise grid overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#e7dfcd] md:grid-cols-[230px_1fr]" id="timeline-panel"></div>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="lebenslauf">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 02 · CV <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">My <span class="hl">CV</span> — Background · Milestones &amp; experience.</h2>
+<p class="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg">An honest account: vocational training, two unfinished degrees, hospitality, sales — and now a fresh start in IT.</p>
+</div>
+<div class="reveal is-in mt-12 grid gap-7 lg:grid-cols-[330px_minmax(0,1fr)] lg:gap-8" style="transition-delay:.15s">
+<!-- Sticky Sidebar: Stammdaten -->
+<aside class="lg:sticky lg:top-28 lg:self-start">
+<div class="overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#e7dfcd]">
+<div class="border-b-2 border-ink bg-ink px-5 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-cream/50 uppercase">personal-details.yml</p>
+</div>
+<dl class="divide-y divide-line" id="stammdaten"></dl>
+</div>
+<p class="mt-3 px-1 font-mono text-[11px] text-ink-3">Source: <span class="text-ink-2">/application/cv.tex</span> · plain text.</p>
+</aside>
+<!-- CV-Paper (LaTeX-Look) -->
+<article class="overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#e7dfcd]">
+<header class="flex items-center justify-between border-b-2 border-ink bg-paper px-6 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-ink-2 uppercase">
+<span class="text-ember">▸</span> cv.pdf
+              </p>
+<span class="rounded-sm border border-ink/30 bg-card px-2 py-0.5 font-mono text-[10px] font-bold tracking-wider text-ink-2">A4 · 10pt</span>
+</header>
+<div class="grid gap-0 md:grid-cols-[160px_1fr]">
+<div class="border-b-2 border-line bg-cream/60 px-6 py-5 md:border-b-0 md:border-r-2">
+<p class="font-mono text-[10px] font-bold tracking-[0.18em] text-ember uppercase">Section</p>
+<p class="mt-2 font-display text-2xl font-bold tracking-tight text-ink">01</p>
+<p class="mt-1 font-mono text-[11px] leading-snug text-ink-2">Retraining</p>
+</div>
+<div class="px-6 py-5 sm:px-8" id="cv-Umschulung"></div>
+</div>
+<div class="grid gap-0 border-t-2 border-line md:grid-cols-[160px_1fr]">
+<div class="border-b-2 border-line bg-cream/60 px-6 py-5 md:border-b-0 md:border-r-2">
+<p class="font-mono text-[10px] font-bold tracking-[0.18em] text-ember uppercase">Section</p>
+<p class="mt-2 font-display text-2xl font-bold tracking-tight text-ink">02</p>
+<p class="mt-1 font-mono text-[11px] text-ink-2">Work experience</p>
+</div>
+<div class="px-6 py-5 sm:px-8" id="cv-Experience"></div>
+</div>
+<div class="grid gap-0 border-t-2 border-line md:grid-cols-[160px_1fr]">
+<div class="border-b-2 border-line bg-cream/60 px-6 py-5 md:border-b-0 md:border-r-2">
+<p class="font-mono text-[10px] font-bold tracking-[0.18em] text-ember uppercase">Section</p>
+<p class="mt-2 font-display text-2xl font-bold tracking-tight text-ink">03</p>
+<p class="mt-1 font-mono text-[11px] text-ink-2">Education</p>
+</div>
+<div class="px-6 py-5 sm:px-8" id="cv-Bildung"></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="relative scroll-mt-24 py-20 sm:py-28" id="demos">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 03 · Showcase — try it yourself <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">Interactive <span class="hl">CRM</span> &amp; <span class="hl-gold">AI demos.</span></h2>
+<p class="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg">Two small tools that show how I think: integrating systems, validating data, structuring prompts and delivering transparent results. Both run live in your browser.</p>
+</div>
+<div class="scroll-mt-28 mt-14" id="match">
+<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+<div>
+<p class="font-mono text-xs font-bold tracking-[0.22em] text-ember uppercase">Feature A · Integration, not isolation</p>
+<h3 class="mt-2 font-display text-2xl font-bold tracking-tight sm:text-[1.7rem]">CRM Import &amp; Field Mapping Workbench</h3>
+<p class="mt-2 max-w-2xl text-[15px] text-ink-2">A realistic task for an SME: map customer data from an ERP export to custom CRM fields, validate it, detect duplicates and only then run a test import.</p>
+</div>
+<button class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-card px-4 py-2 font-mono text-xs font-bold text-ink shadow-[3px_3px_0_#B8CCE2] transition-all hover:-translate-y-0.5 hover:bg-paper active:translate-y-0 active:shadow-none" id="reset-import">
+<span class="h-3.5 w-3.5" data-lucide="rotate-ccw"></span> Reset mapping
+            </button>
+</div>
+<div class="grid gap-7 lg:grid-cols-12">
+<div class="reveal is-in rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2] lg:col-span-7" style="transition-delay:.1s">
+<div class="flex items-center justify-between border-b-2 border-ink bg-paper px-5 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-ink-2 uppercase"><span class="text-ember">▸</span> erp_customers_export.csv · 4 records</p>
+<span class="font-mono text-[10px] font-bold uppercase tracking-wider text-ink-3" id="mapping-state">not yet checked</span>
+</div>
+<div class="px-5 py-5 sm:px-7">
+<div class="mb-3 grid grid-cols-[1fr_30px_1fr] items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-ink-3">
+<span>ERP source field</span><span></span><span>SMARTCRM target field</span>
+</div>
+<div class="space-y-2.5" id="import-mapping"></div>
+<div class="mt-6 grid gap-3 border-t-2 border-dashed border-line pt-5 sm:grid-cols-2">
+<label class="flex cursor-pointer items-start gap-3 rounded-md border-2 border-line bg-cream px-3.5 py-3">
+<input checked="" class="mt-0.5 h-4 w-4 accent-[#1565C0]" id="dedupe-option" type="checkbox"/>
+<span><span class="block text-[13px] font-semibold text-ink">Catch duplicates</span><span class="mt-0.5 block font-mono text-[10.5px] text-ink-3">Key: ERP ID + email</span></span>
+</label>
+<label class="flex cursor-pointer items-start gap-3 rounded-md border-2 border-line bg-cream px-3.5 py-3">
+<input checked="" class="mt-0.5 h-4 w-4 accent-[#1565C0]" id="normalize-option" type="checkbox"/>
+<span><span class="block text-[13px] font-semibold text-ink">Normalise data</span><span class="mt-0.5 block font-mono text-[10.5px] text-ink-3">Trim · Lowercase email</span></span>
+</label>
+</div>
+<div class="mt-5 flex flex-wrap gap-3">
+<button class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-card px-4 py-2.5 font-display text-[14px] font-semibold text-ink shadow-[3px_3px_0_#B8CCE2] transition-all hover:-translate-y-0.5 hover:bg-paper active:translate-y-0 active:shadow-none" id="auto-map"><span class="h-4 w-4 text-ember" data-lucide="wand-sparkles"></span> Map fields automatically</button>
+<button class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-ink px-4 py-2.5 font-display text-[14px] font-semibold text-cream shadow-[3px_3px_0_#42A5F5] transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-none" id="validate-import"><span class="h-4 w-4 text-gold" data-lucide="scan-line"></span> Validate mapping</button>
+</div>
+</div>
+</div>
+<div class="reveal is-in flex min-h-[510px] flex-col overflow-hidden rounded-xl border-2 border-ink bg-term shadow-[8px_8px_0_#B8CCE2] lg:col-span-5" style="transition-delay:.2s">
+<div class="flex items-center justify-between border-b border-white/10 bg-term-2 px-5 py-3">
+<p class="font-mono text-xs text-cream/60"><span class="text-gold">▸</span> import_pipeline.log</p>
+<span class="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-cream/35" id="import-live-state"><span class="h-1.5 w-1.5 rounded-full bg-ink-3"></span> ready</span>
+</div>
+<div class="flex-1 overflow-y-auto px-5 py-5 font-mono text-[11.5px] leading-[1.8] text-cream/65" id="import-log">
+<p class="text-cream/35"># Waiting for field mapping …</p>
+<p><span class="text-gold">source</span> = "erp_customers_export.csv"</p>
+<p><span class="text-gold">target</span> = "SMARTCRM / Companies &amp; Contacts"</p>
+</div>
+<div class="hidden border-t border-white/10 bg-[#0C1624] px-5 py-4" id="import-summary"></div>
+<div class="border-t border-white/10 bg-term-2 px-5 py-4">
+<button class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-md border-2 border-cream/20 bg-white/5 px-4 py-3 font-display text-[14px] font-semibold text-cream/35 transition-all disabled:opacity-60" disabled="" id="run-import"><span class="h-4 w-4" data-lucide="play"></span> Start test import</button>
+</div>
+</div>
+</div>
+</div>
+<div class="scroll-mt-28 mt-20 sm:mt-24" id="lead-scorer">
+<div class="mb-8">
+<p class="font-mono text-xs font-bold tracking-[0.22em] text-ember uppercase">Feature B · Prompt engineering demo</p>
+<h3 class="mt-2 font-display text-2xl font-bold tracking-tight sm:text-[1.7rem]">CRM Lead Scorer — extract customer signals with AI</h3>
+<p class="mt-2 max-w-xl text-[15px] text-ink-2">Three real notes from everyday CRM work. A structured prompt turns them into scores and concrete next steps — exactly how I would build it for Smart-CRM.</p>
+</div>
+<div class="grid gap-7 lg:grid-cols-12">
+<div class="reveal is-in lg:col-span-7" style="transition-delay:.1s">
+<div class="overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#e7dfcd]">
+<div class="flex items-center justify-between border-b-2 border-ink bg-paper px-5 py-3">
+<p class="font-mono text-[11px] font-bold tracking-[0.18em] text-ink-2 uppercase">crm://leads/open — 3 entries</p>
+<span class="font-mono text-[11px] text-ink-3" id="lead-status">// ready — 3 leads in the CRM pool</span>
+</div>
+<div class="divide-y-2 divide-line" id="leads"></div>
+</div>
+</div>
+<div class="reveal is-in lg:col-span-5" style="transition-delay:.2s">
+<div class="flex h-full flex-col gap-5">
+<div class="flex-1 overflow-hidden rounded-xl border-2 border-ink bg-term">
+<div class="border-b border-white/10 bg-term-2 px-5 py-2.5">
+<p class="font-mono text-xs text-cream/60"><span class="text-gold">▸</span> lead_scorer.prompt</p>
+</div>
+<pre class="overflow-x-auto px-5 py-4 font-mono text-[11.5px] leading-[1.85] text-cream/80"><code><span class="text-gold">SYSTEM</span><span class="text-cream/45">  You are a senior CRM analyst</span>
+<span class="text-cream/45">       at Smart-CRM. Score leads</span>
+<span class="text-cream/45">       by buying signals, urgency,</span>
+<span class="text-cream/45">       and industry fit. 0–100.</span>
+
+<span class="text-ember">USER</span><span class="text-cream/45">    Analyse the lead history.</span>
+<span class="text-cream/45">       Respond ONLY with JSON:</span>
+<span class="text-[#9bc46a]">       { "score": int,</span>
+<span class="text-[#9bc46a]">         "level": "HOT|WARM|COLD",</span>
+<span class="text-[#9bc46a]">         "recommendation": string }</span></code></pre>
+</div>
+<div class="rounded-xl border-2 border-ink bg-card p-5 shadow-[8px_8px_0_#e7dfcd]">
+<div class="flex flex-wrap gap-3">
+<button class="inline-flex flex-1 items-center justify-center gap-2 rounded-md border-2 border-ink bg-ember px-5 py-3.5 font-display text-[15px] font-semibold text-cream shadow-[4px_4px_0_#22252a] transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#22252a] active:translate-y-0 active:shadow-[2px_2px_0_#22252a]" id="analyze-btn">
+<span class="h-4 w-4" data-lucide="sparkles"></span> Analyse with AI
+                    </button>
+<button class="hidden items-center gap-2 rounded-md border-2 border-ink bg-card px-4 py-3.5 font-mono text-xs font-bold shadow-[3px_3px_0_#e7dfcd] transition-all hover:-translate-y-0.5 hover:bg-paper active:translate-y-0" id="reset-leads">
+<span class="h-3.5 w-3.5" data-lucide="rotate-ccw"></span> Reset
+                    </button>
+</div>
+<p class="mt-4 font-mono text-[11px] leading-relaxed text-ink-3">This demo simulates the API call — in a real project: a Python backend, a CRM API connection and scores written back to the lead record.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="warum">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+<div class="lg:col-span-5">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 04 · Why SMARTCRM? <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]"><span class="hl">Agile, professional, collaborative</span> — that is how I work, too.</h2>
+</div>
+<div class="reveal is-in mt-8" style="transition-delay:.15s">
+<blockquote class="border-l-4 border-ember pl-5 font-display text-xl leading-snug font-semibold text-ink sm:text-[1.35rem]">“Customer needs are our compass.” <span class="mt-2 block font-mono text-xs font-normal tracking-wider text-ink-3">— SMARTCRM company philosophy, Kandel</span></blockquote>
+<p class="mt-6 leading-relaxed text-ink-2">That sentence won me over. After 11 years in sales, I know how rarely software is truly designed around users’ everyday work. SMARTCRM builds CRM <em>with</em> SMEs rather than just <em>for</em> them — and uses its own software in-house. Using your own product every day brings genuine honesty to development. That is exactly the kind of environment I want to work in.</p>
+</div>
+<div class="reveal is-in mt-8" style="transition-delay:.25s">
+<div class="rounded-xl border-2 border-ink bg-ink px-6 py-5 shadow-[6px_6px_0_#42A5F5]">
+<p class="font-mono text-[11px] tracking-[0.2em] text-cream/40 uppercase">Your guiding principles · my way of working</p>
+<p class="mt-2.5 font-mono text-sm leading-relaxed text-cream sm:text-[15px]"><span class="font-bold text-gold">agile</span> <span class="text-cream/40">+</span> <span class="font-bold text-cream">professional</span> <span class="text-cream/40">+</span> <span class="font-bold text-gold">collaborative</span> <span class="text-cream/40">→</span> <span class="text-ember font-bold">customer-focused</span></p>
+<div class="mt-4 flex flex-wrap gap-2 border-t border-white/10 pt-4">
+<span class="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-cream/70">first-name terms</span>
+<span class="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-cream/70">open doors</span>
+<span class="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-cream/70">flat hierarchies</span>
+<span class="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-cream/70">room to shape things</span>
+<span class="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-cream/70">mobile &amp; flexible</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7">
+<div class="border-t-2 border-ink" id="warum-list"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="chat">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 05 · AI interview <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">The AI assistant:</h2>
+</div>
+<div class="reveal is-in mt-12 grid gap-6 lg:grid-cols-[1fr_340px]" style="transition-delay:.15s">
+<!-- Chatfenster -->
+<div class="flex flex-col overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2]">
+<div class="flex items-center justify-between gap-4 border-b-2 border-ink bg-ink px-5 py-3.5">
+<div class="flex items-center gap-3">
+<span class="flex h-9 w-9 items-center justify-center rounded-md border border-white/20 bg-ember text-cream"><span class="h-[18px] w-[18px]" data-lucide="sparkles"></span></span>
+<div>
+<p class="font-mono text-[13px] font-bold text-cream">ronnies-assistant <span class="text-gold">v2.0</span></p>
+<p class="font-mono text-[10px] text-cream/50">trained on: cv.pdf · motivation.md · evolution.log</p>
+</div>
+</div>
+<span class="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-moss"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-moss"></span> online</span>
+</div>
+<div class="h-[440px] space-y-5 overflow-y-auto bg-cream/60 px-5 py-6 sm:px-7" id="chat-log"></div>
+<div class="flex items-center justify-between gap-3 border-t-2 border-line bg-paper px-5 py-3">
+<p class="font-mono text-[11px] text-ink-3"><span class="text-ember">▸</span></p>
+<button class="inline-flex shrink-0 items-center gap-1.5 rounded-md border-2 border-ink bg-card px-3 py-1.5 font-mono text-[11px] font-bold text-ink shadow-[3px_3px_0_#B8CCE2] transition-all hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:shadow-none" id="chat-reset">
+<span class="h-3.5 w-3.5" data-lucide="rotate-ccw"></span> Reset
+              </button>
+</div>
+</div>
+<!-- Fragen-Rail -->
+<aside class="flex flex-col gap-3">
+<p class="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">Suggested questions · HR mode</p>
+<div class="flex flex-col gap-2.5" id="chat-questions"></div>
+<p class="mt-1 font-mono text-[11px] leading-relaxed text-ink-3"></p>
+</aside>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="persoenliches">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 06 · Personal interests <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">What inspires me <span class="hl">beyond the code</span> .</h2>
+<p class="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg">Kandel is more than a place to work. It is where I play, organise events, take to the stage and have put down roots.</p>
+</div>
+<div class="mt-12 grid gap-7 md:grid-cols-2">
+<!-- Karte 1: Schach -->
+<article class="group overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2] transition-transform duration-300 hover:-translate-y-1">
+<figure class="relative aspect-[16/9] overflow-hidden border-b-2 border-ink bg-gradient-to-br from-[#dce9f5] via-[#f8fbfe] to-[#b8cce2]" data-photo-slot="./img/turm-kandel.jpg">
+<div class="absolute inset-0 opacity-[0.16]" style="background-image:linear-gradient(45deg,#16314d 25%,transparent 25%),linear-gradient(-45deg,#16314d 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#16314d 75%),linear-gradient(-45deg,transparent 75%,#16314d 75%);background-size:48px 48px;background-position:0 0,0 24px,24px -24px,-24px 0"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink/30 bg-card/80 text-ink shadow-[3px_3px_0_#B8CCE2] backdrop-blur-sm"><span class="h-7 w-7" data-lucide="crown"></span></span>
+<p class="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-2">Chessboard · Strategy &amp; thinking</p>
+<p class="mt-1 font-mono text-[9.5px] text-ink-3">./img/turm-kandel.jpg</p>
+</div>
+<span class="absolute top-3 left-3 rounded-md border border-ink/30 bg-card/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-ink-2 backdrop-blur-sm">Turm Kandel</span>
+</figure>
+<div class="px-6 py-6 sm:px-7">
+<p class="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ember">“Turm Kandel” chess club</p>
+<h3 class="mt-2 font-display text-xl font-bold tracking-tight text-ink">Thinking through variations</h3>
+<p class="mt-3 text-[14.5px] leading-relaxed text-ink-2">Whether on Fridays at the after-school club or in competitions at the council chamber: chess is not about rushing to move pieces. It is about calmly analysing positions, thinking through plans and keeping an overview even under time pressure. I play actively for the Turm Kandel chess club.</p>
+</div>
+</article>
+<!-- Karte 2: Städtepartnerschaften -->
+<article class="group overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2] transition-transform duration-300 hover:-translate-y-1">
+<figure class="relative aspect-[16/9] overflow-hidden border-b-2 border-ink bg-gradient-to-br from-[#e3eef8] via-[#f9fcff] to-[#a8c7e5]" data-photo-slot="./img/grenueberschreitende-freundschaften.png">
+<div class="absolute inset-0">
+<svg aria-hidden="true" class="h-full w-full text-ink" fill="none" viewbox="0 0 600 340">
+<path d="M55 235 C155 100 235 285 330 145 C390 55 465 110 555 210" opacity=".14" stroke="currentColor" stroke-dasharray="8 12" stroke-width="3"></path>
+<circle cx="55" cy="235" fill="#1565C0" opacity=".45" r="8"></circle><circle cx="330" cy="145" fill="#42A5F5" opacity=".55" r="8"></circle><circle cx="555" cy="210" fill="#1565C0" opacity=".45" r="8"></circle>
+</svg>
+</div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink/30 bg-card/80 text-ink shadow-[3px_3px_0_#B8CCE2] backdrop-blur-sm"><span class="h-7 w-7" data-lucide="handshake"></span></span>
+<p class="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-2">Friendships · Connections &amp; perspectives</p>
+<p class="mt-1 font-mono text-[9.5px] text-ink-3">./img/grenueberschreitende-freundschaften.png</p>
+</div>
+<span class="absolute top-3 left-3 rounded-md border border-ink/30 bg-card/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-ink-2 backdrop-blur-sm">Kandel · Reichshoffen · Whitworth</span>
+</figure>
+<div class="px-6 py-6 sm:px-7">
+<p class="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ember">Grenzüberschreitende Freundschaften e.V.</p>
+<h3 class="mt-2 font-display text-xl font-bold tracking-tight text-ink">Friendships across borders</h3>
+<p class="mt-3 text-[14.5px] leading-relaxed text-ink-2">Before moving to Kandel, I had never come across this kind of association, but I immediately liked the idea: it maintains the town’s twinning partnerships with Reichshoffen in Alsace and Whitworth in England. I especially enjoy meeting our English friends — their mentality just suits me. Those encounters have led to friendships that have now lasted 15 years. Because I believe in the idea so strongly, I decided early on to get involved on the committee.</p>
+</div>
+</article>
+<!-- Karte 3: Fastnacht -->
+<article class="group overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2] transition-transform duration-300 hover:-translate-y-1">
+<figure class="relative aspect-[16/9] overflow-hidden border-b-2 border-ink bg-gradient-to-br from-[#cddff0] via-[#f5f9fd] to-[#a9c8e8]" data-photo-slot="./img/bikage.jpg">
+<div class="absolute -top-10 left-8 h-28 w-3 rotate-[18deg] bg-gold/20"></div><div class="absolute top-0 right-16 h-32 w-3 -rotate-[20deg] bg-ember/15"></div><div class="absolute bottom-8 left-1/4 h-3 w-3 rounded-full bg-gold/40"></div><div class="absolute top-12 right-1/4 h-2 w-2 rounded-full bg-ember/35"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink/30 bg-card/80 text-ink shadow-[3px_3px_0_#B8CCE2] backdrop-blur-sm"><span class="h-7 w-7" data-lucide="mic-2"></span></span>
+<p class="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-2">Stage · Performance &amp; communication</p>
+<p class="mt-1 font-mono text-[9.5px] text-ink-3">./img/bikage.jpg</p>
+</div>
+<span class="absolute top-3 left-3 rounded-md border border-ink/30 bg-card/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-ink-2 backdrop-blur-sm">goldich Kannler Fasenacht</span>
+</figure>
+<div class="px-6 py-6 sm:px-7">
+<p class="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ember">Bienwald-Karneval-Gesellschaft (Bi-Ka-Ge)</p>
+<h3 class="mt-2 font-display text-xl font-bold tracking-tight text-ink">From silliness to Swiss precision</h3>
+<p class="mt-3 text-[14.5px] leading-relaxed text-ink-2">For years I performed with the Showbuwe, covering the full range with the group — from complete silliness to clever insider humour. These days, I take the stage as a carnival speaker. My task: with a Swiss accent, dialect and meticulous attention to detail, I lead the audience in the opening oath to the “goldich Kannler Fasenacht”, Kandel’s carnival. My fondness for dry British humour comes in very handy.</p>
+</div>
+</article>
+<!-- Karte 4: Heimat -->
+<article class="group overflow-hidden rounded-xl border-2 border-ink bg-card shadow-[8px_8px_0_#B8CCE2] transition-transform duration-300 hover:-translate-y-1">
+<figure class="relative aspect-[16/9] overflow-hidden border-b-2 border-ink bg-gradient-to-br from-[#d8e8f4] via-[#f9fcff] to-[#b9d2e8]" data-photo-slot="./img/kandel.jpg">
+<svg aria-hidden="true" class="absolute inset-0 h-full w-full text-ink opacity-[0.13]" fill="currentColor" viewbox="0 0 600 340">
+<path d="M0 275 L100 225 L160 254 L240 178 L315 240 L390 190 L470 242 L600 170 L600 340 L0 340 Z"></path>
+<path d="M270 210 H344 V280 H270 Z M290 148 H324 V210 H290 Z M302 95 H312 V148 H302 Z"></path>
+<path d="M280 148 L307 112 L334 148 Z"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink/30 bg-card/80 text-ink shadow-[3px_3px_0_#B8CCE2] backdrop-blur-sm"><span class="h-7 w-7" data-lucide="home"></span></span>
+<p class="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-2">Kandel · Home &amp; roots</p>
+<p class="mt-1 font-mono text-[9.5px] text-ink-3">./img/kandel.jpg</p>
+</div>
+<span class="absolute top-3 left-3 rounded-md border border-ink/30 bg-card/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-ink-2 backdrop-blur-sm">Roots &amp; home</span>
+</figure>
+<div class="px-6 py-6 sm:px-7">
+<p class="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ember">Roots &amp; home in Kandel</p>
+<h3 class="mt-2 font-display text-xl font-bold tracking-tight text-ink">A place to belong</h3>
+<p class="mt-3 text-[14.5px] leading-relaxed text-ink-2">My roots are in Landau-Wollmesheim, I grew up in Rülzheim — and eventually married into Kandel. This is where I started my family, found my home and put down roots. Kandel is home.</p>
+</div>
+</article>
+</div>
+<div class="reveal is-in mt-10 flex flex-wrap items-center justify-between gap-4 border-t-2 border-dashed border-line pt-6" style="transition-delay:.15s">
+<a class="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-ember px-4 py-2.5 font-display text-sm font-semibold text-cream shadow-[3px_3px_0_#16314D] transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-none" href="#kontakt">Continue the conversation over coffee <span class="h-4 w-4" data-lucide="coffee"></span></a>
+</div>
+</div>
+</section>
+<section class="relative py-20 sm:py-28" id="kontakt">
+<div class="mx-auto max-w-6xl px-5 sm:px-8">
+<div class="reveal is-in max-w-3xl">
+<p class="font-mono text-xs font-medium tracking-[0.22em] text-ember uppercase"><span class="text-ink-3">[</span> 07 · Final command <span class="text-ink-3">]</span></p>
+<h2 class="mt-4 font-display text-3xl leading-[1.08] font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">Let’s <span class="hl">talk</span></h2>
+<p class="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg"></p>
+</div>
+<div class="mt-12 grid gap-7 lg:grid-cols-12">
+<div class="reveal is-in lg:col-span-7" style="transition-delay:.1s">
+<div class="scanlines h-full overflow-hidden rounded-xl border-2 border-ink bg-term shadow-[8px_8px_0_#e7dfcd]">
+<div class="flex items-center justify-between border-b border-white/10 bg-term-2 px-6 py-3">
+<p class="font-mono text-xs text-cream/60"><span class="text-gold">▸</span> contacts.yaml — 4 entries</p>
+<span class="flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-moss uppercase"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-moss"></span> available</span>
+</div>
+<div class="divide-y divide-white/8" id="kontakte"></div>
+</div>
+</div>
+<div class="reveal is-in lg:col-span-5" style="transition-delay:.2s">
+<div class="flex h-full flex-col rounded-xl border-2 border-ink bg-card p-7 shadow-[8px_8px_0_#e7dfcd] sm:p-8">
+<p class="font-mono text-[11px] font-bold tracking-[0.2em] text-ember uppercase">Request application documents</p>
+<h3 class="mt-3 font-display text-2xl leading-tight font-bold tracking-tight sm:text-[1.6rem]">CV, certificates &amp; project list — bundled as a PDF.</h3>
+<p class="mt-3 text-[15px] leading-relaxed text-ink-2">One click to request the full application documents by email.</p>
+<a class="mt-6 inline-flex w-fit items-center gap-2.5 rounded-md border-2 border-ink bg-ember px-6 py-4 font-display text-[15px] font-semibold text-cream shadow-[4px_4px_0_#22252a] transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#22252a] active:translate-y-0 active:shadow-[2px_2px_0_#22252a]" href="mailto:bienwaldcoder@gmail.com?subject=Request%3A+application+documents+%28Smart-CRM+internship%29&amp;body=Hi+Ronnie%2C%0A%0APlease+send+me+your+full+application+documents.%0A%0AThank+you+and+best+wishes">
+<span class="h-4 w-4" data-lucide="file-down"></span> Request application documents / PDF
+              </a>
+<div class="mt-7 space-y-2.5 border-t-2 border-dashed border-line pt-6 font-mono text-xs text-ink-2">
+<p class="flex items-center gap-2.5"><span class="h-4 w-4 text-gold" data-lucide="clock"></span> anytime</p>
+<p class="flex items-center gap-2.5"><span class="h-4 w-4 text-gold" data-lucide="map-pin"></span>Kandel</p>
+<p class="flex items-center gap-2.5"><span class="ml-0.5 font-bold text-ember">›</span> Internship starts: April 2027</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-20 border-t-2 border-ink bg-paper/60 sm:mt-28">
+<div class="pointer-events-none absolute right-8 bottom-4 opacity-[0.045] sm:right-16" title="Nobody expects the Ministry of Silly Walks">
+<svg aria-hidden="true" class="h-32 w-auto rotate-[-6deg] text-ink sm:h-40" fill="currentColor" viewbox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+<path d="M52 24 C52 12 66 6 66 6 C66 6 80 12 80 24 L80 28 L52 28 Z M46 28 L86 28 C86 28 84 32 66 32 C48 32 46 28 46 28 Z"></path>
+<circle cx="66" cy="40" r="11"></circle>
+<path d="M58 51 L50 108 L78 108 L72 51 Z"></path>
+<path d="M50 62 L36 76 L34 80 L48 66 Z"></path>
+<path d="M36 76 L32 96 L50 96 L46 76 Z"></path>
+<rect height="16" rx="2.5" width="22" x="26" y="93"></rect>
+<rect fill="none" height="6" rx="3" stroke="currentColor" stroke-width="2" width="6" x="34" y="89"></rect>
+<path d="M78 62 L92 74 L90 80 L76 68 Z"></path>
+<path d="M54 106 L44 148 L36 178 L48 180 L54 152 L64 106 Z"></path>
+<path d="M32 176 L26 188 L52 188 L46 176 Z"></path>
+<path d="M66 106 L86 86 L104 60 L112 48 L118 52 L108 66 L88 92 L70 112 Z"></path>
+<path d="M110 44 L124 38 L122 52 L108 58 Z"></path>
+</svg>
+</div>
+<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-8 sm:flex-row sm:px-8">
+<p class="text-center font-mono text-xs leading-relaxed text-ink-2 sm:text-left">© 2026 Ronnie Kuntz · Internship application · IT specialist in application development (IHK)<span class="block text-[11px] text-ink-3">Single page, built with Tailwind via CDN &amp; vanilla JS ·</span></p>
+<p class="font-mono text-xs text-ink-3"><span class="text-gold">$</span> echo <span class="text-ember">"see you soon at smart-crm"</span> &amp;&amp; exit 0</p>
+<a aria-label="Back to top" class="flex h-10 w-10 items-center justify-center rounded-md border-2 border-ink bg-card shadow-[3px_3px_0_#22252a] transition-all hover:-translate-y-0.5 hover:bg-ember hover:text-cream active:translate-y-0 active:shadow-none" href="#top">
+<span class="h-4 w-4" data-lucide="arrow-up"></span>
+</a>
+</div>
+</footer>
+</section>
+</main>
+<script>
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const escapeHtml = (s) => s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+    const replaceIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+
+    /* Shadow-Replace: hardcoded Hex-Werte → CSS-variable-basierte Klassen */
+    const SHADOW_MAP = {
+      'shadow-[3px_3px_0_#22252a]': 'sh-ink',
+      'shadow-[4px_4px_0_#22252a]': 'sh-ink-md',
+      'shadow-[5px_5px_0_#22252a]': 'sh-ink-lg',
+      'shadow-[2px_2px_0_#22252a]': 'sh-ink-xs',
+      'shadow-[8px_8px_0_#e7dfcd]': 'sh-line',
+      'shadow-[3px_3px_0_#e7dfcd]': 'sh-line-xs',
+      'shadow-[4px_4px_0_#e7dfcd]': 'sh-line-md',
+      'shadow-[4px_4px_0_#ea580c]': 'sh-ember',
+      'shadow-[6px_6px_0_#ea580c]': 'sh-ember-lg',
+      'shadow-[2px_2px_0_#ea580c]': 'sh-ember-xs',
+      'shadow-[4px_4px_0_#d97706]': 'sh-gold',
+      'shadow-[6px_6px_0_#d97706]': 'sh-gold-lg',
+      'shadow-[10px_10px_0_rgba(34,37,42,0.12)]': 'sh-terminal',
+    };
+    const SHADOW_HOVER = {
+      'hover:shadow-[6px_6px_0_#ea580c]': 'hover:sh-ember-lg',
+      'hover:shadow-[6px_6px_0_#22252a]': 'hover:sh-ink-lg',
+      'hover:shadow-[4px_4px_0_#d97706]': 'hover:sh-gold',
+      'hover:shadow-[6px_6px_0_#d97706]': 'hover:sh-gold-lg',
+      'active:shadow-[2px_2px_0_#ea580c]': 'active:sh-ember-xs',
+      'active:shadow-[2px_2px_0_#22252a]': 'active:sh-ink-xs',
+    };
+    function replaceShadows() {
+      document.querySelectorAll('[class]').forEach(el => {
+        let cls = el.className;
+        if (typeof cls !== 'string') return;
+        let changed = false;
+        for (const [old, rep] of Object.entries({...SHADOW_MAP, ...SHADOW_HOVER})) {
+          if (cls.includes(old)) { cls = cls.replaceAll(old, rep); changed = true; }
+        }
+        if (changed) el.className = cls;
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      replaceIcons();
+      replaceShadows();
+
+      document.querySelectorAll('figure[data-photo-slot]').forEach(fig => {
+        const src = fig.getAttribute('data-photo-slot');
+        if (!src) return;
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = fig.querySelector('figcaption')?.textContent || '';
+        img.className = 'absolute inset-0 h-full w-full object-cover';
+        img.loading = 'lazy';
+        img.onload = () => {
+          fig.querySelectorAll(':scope > *:not(img)').forEach(el => el.style.display = 'none');
+          fig.style.background = 'none';
+        };
+        img.onerror = () => img.remove();
+        fig.prepend(img);
+      });
+
+      /* Bei jedem DOM-Change (Timeline, Slider, Leads) erneut ersetzen */
+      new MutationObserver(replaceShadows).observe(document.body, { childList: true, subtree: true });
+    });
+
+    const nav = $('#nav');
+    const progress = $('#nav-progress');
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+      if (window.scrollY > 24) {
+        nav.classList.add('border-line', 'bg-cream/92', 'sh-nav');
+        nav.classList.remove('border-transparent', 'bg-cream/60');
+      } else {
+        nav.classList.remove('border-line', 'bg-cream/92', 'sh-nav');
+        nav.classList.add('border-transparent', 'bg-cream/60');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const menuToggle = $('#menu-toggle');
+    const mobileMenu = $('#mobile-menu');
+    const iconMenu = $('#icon-menu');
+    const iconX = $('#icon-x');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      iconMenu.classList.toggle('hidden', isOpen);
+      iconX.classList.toggle('hidden', !isOpen);
+    });
+    $$('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open'); iconMenu.classList.remove('hidden'); iconX.classList.add('hidden');
+    }));
+
+    const TERM_SCRIPT = [
+      { type: 'cmd', text: 'whoami' },
+      { type: 'out', text: 'ronnie · Kandel/Southern Palatinate', tone: 'dim' },
+      { type: 'cmd', text: 'cat ~/profile.txt' },
+      { type: 'out', text: 'Retraining : IT specialist, application development (IHK), 2026–', tone: 'info' },
+      { type: 'out', text: 'Experience : 35 years with PCs & Linux (personal), 11 years of customer contact', tone: 'info' },
+      { type: 'out', text: 'Learning   : Python, web basics, prompt engineering', tone: 'info' },
+      { type: 'cmd', text: 'ls ~/looking-for/' },
+      { type: 'out', text: 'work-placement/  local-team/  experienced-developers/', tone: 'ok' },
+      { type: 'cmd', text: './enquiry.sh --to smartcrm --location kandel' },
+      { type: 'out', text: '>>> Looking forward to a phone call or a coffee at your office.', tone: 'hl' },
+    ];
+    const termToneClass = { dim: 'text-cream/45', ok: 'text-[#9bc46a]', hl: 'font-bold text-ember', warn: 'text-gold', info: 'text-[#8ab4f8]' };
+    const runIds = new WeakMap();
+
+    /**
+     * Startet ein Terminal-Skript in beliebigem Container.
+     * options: { prompt, loop, endPause, restartOn }
+     */
+    async function runTerminalIn(bodyEl, script, options = {}) {
+      const promptChar = options.prompt || '$';
+      const loop = options.loop !== false;
+      const endPause = options.endPause ?? 6000;
+      const th = options.theme || {};
+      const myRun = (runIds.get(bodyEl) || 0) + 1;
+      runIds.set(bodyEl, myRun);
+
+      const isAlive = () => runIds.get(bodyEl) === myRun;
+
+      const toneColor = (tone) => {
+        if (!th.bg) return null;
+        const map = { dim: th.dimColor, ok: th.okColor, hl: th.hlColor, warn: th.warnColor, info: th.infoColor };
+        return map[tone] || th.text;
+      };
+
+      const renderTyping = (text) => {
+        let p = bodyEl.querySelector('[data-typing]');
+        if (!p) {
+          p = document.createElement('p');
+          p.className = 'whitespace-pre-wrap';
+          p.setAttribute('data-typing', '1');
+          const promptStyle = th.promptColor ? ` style="color:${th.promptColor}"` : '';
+          const cmdStyle = th.cmdColor ? ` style="color:${th.cmdColor}"` : '';
+          p.innerHTML = `<span class="mr-2"${promptStyle}>${escapeHtml(promptChar)}</span><span data-typed${cmdStyle}></span><span class="cursor ml-0.5 inline-block h-[15px] w-[8px] translate-y-[2px] bg-ember"></span>`;
+          bodyEl.appendChild(p);
+        }
+        p.querySelector('[data-typed]').textContent = text;
+        bodyEl.scrollTop = bodyEl.scrollHeight;
+      };
+
+      const appendLine = (kind, text, tone) => {
+        const p = document.createElement('p');
+        p.className = 'whitespace-pre-wrap';
+        if (kind === 'cmd') {
+          const promptStyle = th.promptColor ? ` style="color:${th.promptColor}"` : '';
+          const cmdStyle = th.cmdColor ? ` style="color:${th.cmdColor}"` : '';
+          p.innerHTML = `<span class="mr-2"${promptStyle}>${escapeHtml(promptChar)}</span><span${cmdStyle}>${escapeHtml(text)}</span>`;
+        } else {
+          const tc = toneColor(tone);
+          if (tc) {
+            p.style.color = tc;
+            if (tone === 'hl') p.style.fontWeight = 'bold';
+          } else {
+            p.classList.add(...(termToneClass[tone] || 'text-cream').split(' '));
+          }
+          p.textContent = text;
+        }
+        const typing = bodyEl.querySelector('[data-typing]');
+        if (typing) typing.remove();
+        bodyEl.appendChild(p);
+        bodyEl.scrollTop = bodyEl.scrollHeight;
+      };
+
+      bodyEl.innerHTML = '';
+      await sleep(500);
+      do {
+        for (const step of script) {
+          if (!isAlive()) return;
+          if (step.type === 'cmd') {
+            for (let i = 1; i <= step.text.length; i++) {
+              if (!isAlive()) return;
+              renderTyping(step.text.slice(0, i));
+              await sleep(28 + Math.random() * 44);
+            }
+            await sleep(step.pause ?? 320);
+            if (!isAlive()) return;
+            appendLine('cmd', step.text);
+            renderTyping('');
+          } else if (step.type === 'wait') {
+            await sleep(step.ms || 400);
+          } else {
+            await sleep(step.pause ?? 140);
+            if (!isAlive()) return;
+            appendLine('out', step.text, step.tone);
+          }
+        }
+        if (loop) {
+          await sleep(endPause);
+          if (!isAlive()) return;
+          bodyEl.innerHTML = '';
+          await sleep(400);
+        }
+      } while (loop && isAlive());
+    }
+
+    const heroTermBody = $('#terminal-body');
+    const runHeroTerminal = () => runTerminalIn(heroTermBody, TERM_SCRIPT);
+    $('#terminal-restart').addEventListener('click', runHeroTerminal);
+    runHeroTerminal();
+
+    const STATIONS = [
+      { id:'dos', jahre:'1991', name:'MS-DOS', kurz:'DOS', titel:'The beginning: 640 KB is enough', anekdote:'It all started on an 8086: tweaking AUTOEXEC.BAT, understanding CONFIG.SYS and programming traffic lights at a junction in BASIC. This is where I learned not just to use systems, but to understand them.', skills:['MS-DOS','AUTOEXEC.BAT','BASIC'],
+        terminal: {
+          prompt: 'C:\\>',
+          title: 'MS-DOS 6.22 · Prompt',
+          theme: { bg:'#000000', barBg:'#0000AA', text:'#AAAAAA', promptColor:'#FFFFFF', cmdColor:'#55FF55', hlColor:'#FFFF55', okColor:'#55FF55', dimColor:'#555555', warnColor:'#FF5555', infoColor:'#5555FF', scanlines:false },
+          script: [
+            { type:'cmd', text:'ver' },
+            { type:'out', text:'MS-DOS Version 6.22', tone:'dim' },
+            { type:'cmd', text:'mem /c | more' },
+            { type:'out', text:'Conventional  640K    free:  542K', tone:'info' },
+            { type:'out', text:'Upper           0K    free:    0K', tone:'dim' },
+            { type:'out', text:'HMA           64K    used', tone:'dim' },
+            { type:'cmd', text:'edit autoexec.bat' },
+            { type:'out', text:'LH C:\\DOS\\SMARTDRV.EXE', tone:'info' },
+            { type:'out', text:'LH C:\\DOS\\MOUSE.COM', tone:'info' },
+            { type:'out', text:'SET SOUND=C:\\SB16', tone:'info' },
+            { type:'cmd', text:'cd \\GAMES\\DOOM' },
+            { type:'cmd', text:'doom.exe' },
+            { type:'out', text:'Setting up sound blaster (IRQ 5, DMA 1) ... OK', tone:'ok' },
+            { type:'out', text:'>>> Starting …', tone:'hl' },
+          ],
+        },
+      },
+      { id:'redhat', jahre:'2002', name:'RedHat 8', kurz:'RPM', titel:'I am root — I can do that!', anekdote:'My first Linux installation — burning a CD, creating partitions by hand, no more Start menu. RPM, Bash and everything modular. Suddenly, I was root.', skills:['Linux','Partitioning','Bash','OSS'],
+        terminal: {
+          prompt: '[root@localhost ~]#',
+          title: 'RedHat Linux 8 · bash',
+          theme: { bg:'#1A1A2E', barBg:'#301830', text:'#E0E0E0', promptColor:'#FF6600', cmdColor:'#FFFFFF', hlColor:'#FFAA00', okColor:'#00CC00', dimColor:'#888888', warnColor:'#FFCC00', infoColor:'#66AAFF', scanlines:false },
+          script: [
+            { type:'cmd', text:'uname -a' },
+            { type:'out', text:'Linux localhost 2.4.20-8 #1 i686 GNU/Linux', tone:'dim' },
+            { type:'cmd', text:'mount /dev/cdrom /mnt/cdrom' },
+            { type:'out', text:'mount: block device /dev/cdrom is write-protected, mounting read-only', tone:'dim' },
+            { type:'cmd', text:'rpm -ivh /mnt/cdrom/RedHat/RPMS/httpd-2.0.40-21.rpm' },
+            { type:'out', text:'Preparing...                ########################## [100%]', tone:'ok' },
+            { type:'out', text:'   1:httpd                   ########################## [100%]', tone:'ok' },
+            { type:'cmd', text:'service httpd start' },
+            { type:'out', text:'Starting httpd:                                        [  OK  ]', tone:'ok' },
+            { type:'cmd', text:'chkconfig --level 35 httpd on' },
+            { type:'out', text:'>>> LAMP stack running. My first web server. Root means responsibility.', tone:'hl' },
+          ],
+        },
+      },
+      { id:'gentoo', jahre:'2010', name:'Gentoo', kurz:'SRC', titel:'The kernel: compiling as meditation', anekdote:'Fine-tuning USE flags, building kernels overnight — patience as a virtue. Gentoo and Arch taught me to understand a system from the ground up, not just operate it.', skills:['USE-Flags','Kernel','Portage','Arch Wiki'],
+        terminal: {
+          prompt: 'root@tuxbox ~ #',
+          title: 'Gentoo · portage',
+          theme: { bg:'#0A0A0A', barBg:'#1A3A1A', text:'#00FF00', promptColor:'#00FF00', cmdColor:'#00FF41', hlColor:'#00FFFF', okColor:'#00FF00', dimColor:'#007700', warnColor:'#FFFF00', infoColor:'#00FF88', scanlines:true },
+          script: [
+            { type:'cmd', text:'nano /etc/portage/make.conf' },
+            { type:'out', text:'CFLAGS="-march=native -O2 -pipe"', tone:'info' },
+            { type:'out', text:'MAKEOPTS="-j4"', tone:'info' },
+            { type:'out', text:'USE="alsa dbus python -gnome -kde X"', tone:'info' },
+            { type:'cmd', text:'emerge --sync' },
+            { type:'out', text:'>>> Syncing portage tree … done.', tone:'ok' },
+            { type:'cmd', text:'emerge --ask --verbose sys-kernel/gentoo-sources' },
+            { type:'out', text:'These are the packages that would be merged, in order:', tone:'dim' },
+            { type:'out', text:'[ebuild  N     ] sys-kernel/gentoo-sources-2.6.34  USE="symlink"', tone:'info' },
+            { type:'cmd', text:'cd /usr/src/linux && make menuconfig' },
+            { type:'cmd', text:'make -j4 && make modules_install' },
+            { type:'out', text:'  CC      arch/x86/kernel/entry_64.o', tone:'dim' },
+            { type:'out', text:'  LD      vmlinux                    [ running ... 47%]', tone:'warn' },
+            { type:'out', text:'  LINK    bzImage                    [ ok ]', tone:'ok' },
+            { type:'out', text:'>>> Kernel built.', tone:'hl' },
+          ],
+        },
+      },
+      { id:'manjaro', jahre:'2015', name:'Manjaro', kurz:'AUR', titel:'A focus on efficiency', anekdote:'Manjaro and CachyOS as daily drivers — optimised kernels, AUR, zero friction. The urge to tinker remains, but my time goes into productivity.', skills:['AUR','Performance-Tuning','Rolling Release'], image: 'img/arch.png', cap: 'pamac upgrade — zero friction, full flow' },
+      { id:'ai', jahre:'2022', name:'AI', kurz:'AI', titel:'The turning point: artificial intelligence', anekdote:'When I received my first answer from an artificial intelligence, I knew immediately: THIS would be a historic milestone that would change a great deal. For me, the first thought was: at last I can bring to life the many ideas I have had for years.', skills:['Prompt Engineering','ChatGPT','Automation','Bringing ideas to life'], image: 'img/ai.jpg', cap: 'Hello, AI — the moment that changed everything' },
+      { id:'python', jahre:'2026', name:'Professional IT', kurz:'PY3', titel:'The future: application development', anekdote:'Retraining as an IT specialist (IHK): finally turning my passion and knowledge into a career.', skills:['Python','Prompt Engineering','APIs','CRM processes'], image: 'img/code.jpg', cap: 'while True: learn()  # running smoothly' },
+    ];
+    const timelineButtons = $('#timeline-buttons');
+    const timelinePanel = $('#timeline-panel');
+    let activeStation = 4;
+
+    function renderTimelineButtons() {
+      timelineButtons.innerHTML = STATIONS.map((s, i) => `
+        <button data-idx="${i}" aria-pressed="${i === activeStation}" class="group relative flex items-center gap-4 text-left md:flex-col md:items-center md:gap-3 md:text-center">
+          <span class="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 font-mono text-[10px] font-bold transition-all duration-300 ${i === activeStation ? 'scale-110 border-ink bg-ember text-cream shadow-[3px_3px_0_#22252a]' : 'border-ink bg-card text-ink group-hover:-translate-y-0.5 group-hover:border-ember group-hover:text-ember'}">${escapeHtml(s.kurz)}</span>
+          <span class="md:block">
+            <span class="block font-mono text-[11px] tracking-wide ${i === activeStation ? 'text-ember' : 'text-ink-3'}">${escapeHtml(s.jahre)}</span>
+            <span class="mt-0.5 block font-display text-sm leading-tight font-semibold ${i === activeStation ? 'text-ink' : 'text-ink-2 group-hover:text-ink'}">${escapeHtml(s.name)}</span>
+          </span>
+        </button>
+      `).join('');
+      $$('button[data-idx]', timelineButtons).forEach(b => b.addEventListener('click', () => {
+        activeStation = +b.dataset.idx;
+        renderTimelineButtons();
+        renderTimelinePanel();
+      }));
+    }
+    function renderTimelinePanel() {
+      const s = STATIONS[activeStation];
+      const t = s.terminal?.theme || {};
+      const termBg = t.bg || '#0B1826';
+      const termBarBg = t.barBg || '#11213A';
+      const termText = t.text || 'rgba(255,255,255,0.85)';
+      const scanCls = t.scanlines ? ' scanlines' : '';
+      const media = s.terminal ? `
+          <div class="animate-rise relative mb-6 overflow-hidden rounded-lg border-2 border-ink shadow-[4px_4px_0_#B8CCE2]${scanCls}" style="background:${termBg}">
+            <div class="flex items-center justify-between border-b border-white/10 px-3.5 py-2" style="background:${termBarBg}">
+              <div class="flex items-center gap-1.5">
+                <span class="h-2.5 w-2.5 rounded-full bg-ember/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-gold/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-moss/70"></span>
+              </div>
+              <p class="font-mono text-[10.5px] tracking-wide text-cream/50">${escapeHtml(s.terminal.title || s.name)}</p>
+              <button data-station-restart class="rounded p-1 text-cream/40 transition-colors hover:bg-white/10 hover:text-ember" aria-label="Replay terminal"><span data-lucide="rotate-ccw" class="h-3 w-3"></span></button>
+            </div>
+            <div id="station-terminal-body" class="h-[240px] overflow-y-auto px-4 py-3 font-mono text-[12px] leading-[1.7] sm:h-[264px]" style="color:${termText}"></div>
+          </div>`
+        : `
+          <div class="animate-rise relative mb-6 overflow-hidden rounded-lg border-2 border-ink bg-term shadow-[4px_4px_0_#B8CCE2]">
+            <img src="${s.image || ''}" alt="${escapeHtml(s.name)}" class="animate-kenburns h-44 w-full object-cover sm:h-52" />
+            <span class="absolute bottom-2.5 left-2.5 rounded-md border border-white/25 bg-term/85 px-2.5 py-1 font-mono text-[10.5px] text-cream/90">${escapeHtml(s.cap || '')}</span>
+            <span class="absolute top-2.5 right-2.5 flex items-center gap-1.5 rounded-md bg-term/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-moss"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-moss"></span>replay</span>
+          </div>`;
+
+      timelinePanel.innerHTML = `
+        <div class="relative flex flex-col justify-between gap-6 bg-ink px-7 py-7 text-cream">
+          <p class="font-mono text-[11px] tracking-[0.2em] text-cream/50">MILESTONE ${String(activeStation+1).padStart(2,'0')}/${String(STATIONS.length).padStart(2,'0')}</p>
+          <p class="font-display text-6xl font-bold tracking-tight text-gold">${escapeHtml(s.jahre)}</p>
+          <p class="font-mono text-xs text-cream/60">${escapeHtml(s.name)}</p>
+          <div class="pointer-events-none absolute -top-6 -right-6 h-24 w-24 rounded-full border-2 border-dashed border-cream/15"></div>
+        </div>
+        <div class="px-7 py-7 sm:px-9 sm:py-8">
+          ${media}
+          <h3 class="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">${escapeHtml(s.titel)}</h3>
+          <p class="mt-3 max-w-2xl leading-relaxed text-ink-2">${escapeHtml(s.anekdote)}</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            ${s.skills.map(sk => `<span class="rounded border border-ink/20 bg-paper px-2.5 py-1 font-mono text-[11px] font-medium text-ink-2 transition-colors hover:border-ember hover:text-ember">${escapeHtml(sk)}</span>`).join('')}
+          </div>
+        </div>`;
+      replaceIcons();
+
+      if (s.terminal) {
+        const stBody = $('#station-terminal-body');
+        const restart = $('[data-station-restart]');
+        const startIt = () => runTerminalIn(stBody, s.terminal.script, { prompt: s.terminal.prompt, loop: true, endPause: 4500, theme: s.terminal.theme });
+        restart?.addEventListener('click', startIt);
+        startIt();
+      }
+    }
+    renderTimelineButtons();
+    renderTimelinePanel();
+
+    /* ===========================================================
+       FEATURE A: CRM Import & Field Mapping Workbench
+       =========================================================== */
+    const IMPORT_FIELDS = [
+      { source:'Customer no.', sample:'K-1042', suggested:'customer_number' },
+      { source:'Company', sample:'Weingut Pfalzland e.K.', suggested:'company_name' },
+      { source:'Contact person', sample:'M. Rebholz', suggested:'contact_name' },
+      { source:'Email', sample:'m.rebholz@pfalzland.de', suggested:'email' },
+      { source:'ERP-ID', sample:'ERP-8821', suggested:'external_id' },
+      { source:'Free text', sample:'Urgent need to replace Excel', suggested:'note' },
+    ];
+    const TARGET_FIELDS = [
+      ['','— do not import —'],
+      ['customer_number','Customer number'],
+      ['company_name','Company name *'],
+      ['contact_name','Contact person'],
+      ['email','Email *'],
+      ['external_id','External ERP ID *'],
+      ['note','Note'],
+      ['industry','Industry'],
+    ];
+    const importMapping = $('#import-mapping');
+    const mappingState = $('#mapping-state');
+    const importLog = $('#import-log');
+    const importSummary = $('#import-summary');
+    const importLiveState = $('#import-live-state');
+    const runImportButton = $('#run-import');
+    let importBusy = false;
+
+    function renderImportMapping(useSuggestions = false) {
+      importMapping.innerHTML = IMPORT_FIELDS.map((field, index) => `
+        <div class="grid grid-cols-[1fr_30px_1fr] items-center gap-3">
+          <div class="min-w-0 rounded-md border-2 border-line bg-cream px-3 py-2.5">
+            <p class="font-display text-[13px] font-semibold text-ink">${escapeHtml(field.source)}</p>
+            <p class="mt-0.5 truncate font-mono text-[10px] text-ink-3">${escapeHtml(field.sample)}</p>
+          </div>
+          <span data-lucide="arrow-right" class="mx-auto h-4 w-4 text-ember"></span>
+          <select data-map-index="${index}" class="min-w-0 rounded-md border-2 border-ink bg-card px-2.5 py-3 font-mono text-[11px] text-ink outline-none transition-colors focus:border-ember">
+            ${TARGET_FIELDS.map(([value, label]) => `<option value="${value}" ${useSuggestions && value === field.suggested ? 'selected' : ''}>${label}</option>`).join('')}
+          </select>
+        </div>`).join('');
+      mappingState.textContent = useSuggestions ? 'automatically mapped' : 'not yet checked';
+      mappingState.className = 'font-mono text-[10px] font-bold uppercase tracking-wider ' + (useSuggestions ? 'text-ember' : 'text-ink-3');
+      runImportButton.disabled = true;
+      runImportButton.className = 'flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-md border-2 border-cream/20 bg-white/5 px-4 py-3 font-display text-[14px] font-semibold text-cream/35 transition-all disabled:opacity-60';
+      importSummary.classList.add('hidden');
+      replaceIcons();
+    }
+
+    function currentMapping() {
+      return $$('select[data-map-index]', importMapping).map((select, index) => ({
+        source: IMPORT_FIELDS[index].source,
+        target: select.value,
+      }));
+    }
+
+    function appendImportLog(text, tone = 'normal') {
+      const p = document.createElement('p');
+      p.className = tone === 'ok' ? 'text-moss' : tone === 'warn' ? 'text-gold' : tone === 'error' ? 'text-[#ff8a80]' : 'text-cream/65';
+      p.textContent = text;
+      importLog.appendChild(p);
+      importLog.scrollTop = importLog.scrollHeight;
+      return p;
+    }
+
+    function validateImportMapping() {
+      const mapping = currentMapping();
+      const targets = mapping.map(item => item.target).filter(Boolean);
+      const required = ['company_name', 'email', 'external_id'];
+      const missing = required.filter(field => !targets.includes(field));
+      const duplicate = targets.find((value, index) => targets.indexOf(value) !== index);
+      importLog.innerHTML = '';
+      appendImportLog('$ python3 validate_mapping.py --dry-run');
+      mapping.filter(item => item.target).forEach(item => appendImportLog(`[map] ${item.source} -> ${item.target}`, 'ok'));
+
+      if (missing.length || duplicate) {
+        if (missing.length) appendImportLog(`[error] Required fields missing: ${missing.join(', ')}`, 'error');
+        if (duplicate) appendImportLog(`[error] Target field mapped more than once: ${duplicate}`, 'error');
+        mappingState.textContent = 'Mapping incomplete';
+        mappingState.className = 'font-mono text-[10px] font-bold uppercase tracking-wider text-[#b91c1c]';
+        runImportButton.disabled = true;
+        return false;
+      }
+
+      appendImportLog('[ok] Schema complete · Data types compatible', 'ok');
+      appendImportLog('[warn] Row 3: invalid email format', 'warn');
+      appendImportLog('[warn] Row 4: possible duplicate of ERP-8821', 'warn');
+      mappingState.textContent = 'ready for test import';
+      mappingState.className = 'font-mono text-[10px] font-bold uppercase tracking-wider text-moss';
+      runImportButton.disabled = false;
+      runImportButton.className = 'flex w-full items-center justify-center gap-2 rounded-md border-2 border-cream/30 bg-ember px-4 py-3 font-display text-[14px] font-semibold text-cream shadow-[3px_3px_0_#42A5F5] transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-none';
+      replaceShadows();
+      return true;
+    }
+
+    async function runTestImport() {
+      if (importBusy || !validateImportMapping()) return;
+      importBusy = true;
+      runImportButton.disabled = true;
+      importLiveState.innerHTML = '<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-gold"></span> running';
+      importLiveState.className = 'flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-gold';
+      const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+      appendImportLog('');
+      appendImportLog('[pipeline] Normalisation started …');
+      await wait(550);
+      appendImportLog('[1/4] Weingut Pfalzland e.K. -> created', 'ok');
+      await wait(500);
+      appendImportLog('[2/4] Maschinenbau Brucker GmbH -> created', 'ok');
+      await wait(500);
+      appendImportLog('[3/4] Bäckerei Sonnenkorn -> held for review: check email', 'warn');
+      await wait(500);
+      const dedupe = $('#dedupe-option').checked;
+      appendImportLog(dedupe ? '[4/4] Pfalzland e.K. -> duplicate skipped' : '[4/4] Pfalzland e.K. -> created', dedupe ? 'warn' : 'ok');
+      await wait(450);
+      appendImportLog('[done] Transaction complete · Rollback available', 'ok');
+      importSummary.classList.remove('hidden');
+      importSummary.innerHTML = `
+        <p class="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-cream/40">Test import results</p>
+        <div class="mt-3 grid grid-cols-3 gap-3 text-center">
+          <div><p class="font-display text-2xl font-bold text-moss">${dedupe ? 2 : 3}</p><p class="font-mono text-[9px] uppercase text-cream/40">created</p></div>
+          <div><p class="font-display text-2xl font-bold text-gold">1</p><p class="font-mono text-[9px] uppercase text-cream/40">review</p></div>
+          <div><p class="font-display text-2xl font-bold text-ember">${dedupe ? 1 : 0}</p><p class="font-mono text-[9px] uppercase text-cream/40">duplicate</p></div>
+        </div>`;
+      importLiveState.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-moss"></span> complete';
+      importLiveState.className = 'flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-moss';
+      runImportButton.disabled = false;
+      importBusy = false;
+    }
+
+    $('#auto-map').addEventListener('click', () => {
+      renderImportMapping(true);
+      importLog.innerHTML = '<p class="text-cream/35"># Field names mapped semantically. Please validate the mapping.</p>';
+    });
+    $('#validate-import').addEventListener('click', validateImportMapping);
+    $('#run-import').addEventListener('click', runTestImport);
+    $('#reset-import').addEventListener('click', () => {
+      renderImportMapping(false);
+      importLog.innerHTML = '<p class="text-cream/35"># Waiting for field mapping …</p><p><span class="text-gold">source</span> = "erp_customers_export.csv"</p><p><span class="text-gold">target</span> = "SMARTCRM / Companies & Contacts"</p>';
+      importLiveState.innerHTML = '<span class="h-1.5 w-1.5 rounded-full bg-ink-3"></span> ready';
+      importLiveState.className = 'flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-cream/35';
+    });
+    renderImportMapping(false);
+
+    const LEADS = [
+      { firma:'Weingut Pfalzland e.K.', kontakt:'M. Rebholz', kanal:'Inbound · Website', notiz:'“We are growing fast, but still work with Excel spreadsheets. Our sales team urgently needs structure.”', score:87, level:'HOT', empfehlung:'Call today: moving from Excel to CRM is an urgent pain point. Offer a demo with the import wizard.' },
+      { firma:'Maschinenbau Brucker GmbH', kontakt:'T. Brucker', kanal:'Newsletter', notiz:'Visited the pricing page 3×, opened the latest email 2× — but has not yet made a direct enquiry.', score:64, level:'WARM', empfehlung:'Nurture: send a case study from mechanical engineering and schedule a follow-up in 7 days.' },
+      { firma:'Bäckerei Sonnenkorn', kontakt:'S. Keller', kanal:'Support-Ticket', notiz:'Legacy system is being phased out; contract ends in 3 months. Urgency and budget are still unclear.', score:41, level:'COLD', empfehlung:'Qualify: suggest a callback, ask about budget and timing — otherwise schedule a Q3 follow-up.' },
+    ];
+    const LEVEL_STYLE = {
+      HOT:  { badge:'bg-ember text-cream',  bar:'#1565C0', text:'text-ember' },
+      WARM: { badge:'bg-gold text-ink',     bar:'#42A5F5', text:'text-gold' },
+      COLD: { badge:'bg-line text-ink-2',   bar:'#7A94AF', text:'text-ink-3' },
+    };
+
+    const leadsEl = $('#leads');
+    const leadStatus = $('#lead-status');
+    const analyzeBtn = $('#analyze-btn');
+    const resetLeads = $('#reset-leads');
+
+    let leadStatus_ = 'idle';
+    let revealed = 0;
+    let analysisTimer = null;
+
+    function renderLeads() {
+      leadsEl.innerHTML = LEADS.map((lead, i) => {
+        const isDone = i < revealed;
+        const isBusy = leadStatus_ === 'running' && i === revealed;
+        const style = LEVEL_STYLE[lead.level];
+
+        const rightHtml = isDone ? `
+          <div class="animate-rise w-full sm:max-w-[240px]">
+            <div class="flex items-center justify-between gap-3">
+              <span class="rounded px-2.5 py-1 font-mono text-[11px] font-bold tracking-wider ${style.badge}">${lead.level}</span>
+              <span class="font-display text-2xl font-bold tabular-nums ${style.text}">${lead.score}</span>
+            </div>
+            <div class="mt-2 h-2 overflow-hidden rounded-full bg-line">
+              <div class="animate-bar h-full rounded-full" style="width:${lead.score}%; background:${style.bar}"></div>
+            </div>
+            <p class="mt-3 border-l-2 pl-3 text-[13px] leading-snug text-ink-2" style="border-color:${style.bar}">
+              <span class="font-mono text-[10px] font-bold tracking-wider text-ink-3 uppercase">Next step · </span>${escapeHtml(lead.empfehlung)}
+            </p>
+          </div>` : isBusy ? `
+          <div class="flex items-center gap-2.5 rounded-md border border-dashed border-ember/60 bg-ember/5 px-4 py-3">
+            <span data-lucide="loader-circle" class="h-4 w-4 animate-spin text-ember"></span>
+            <span class="font-mono text-xs text-ember">Analysing signals …</span>
+          </div>` : `
+          <div class="rounded-md border border-dashed border-line px-4 py-3">
+            <span class="font-mono text-xs text-ink-3">waiting for analysis …</span>
+          </div>`;
+
+        return `
+          <div class="grid gap-4 px-5 py-5 transition-colors duration-500 sm:grid-cols-[1.2fr_1fr] lg:grid-cols-[1.1fr_1.3fr] lg:gap-6 ${isDone ? 'bg-cream' : ''}">
+            <div>
+              <p class="font-display text-[16px] font-bold tracking-tight text-ink">${escapeHtml(lead.firma)}</p>
+              <p class="mt-0.5 font-mono text-[11px] text-ink-3">${escapeHtml(lead.kontakt)} · ${escapeHtml(lead.kanal)}</p>
+              <p class="mt-3 text-[13.5px] leading-relaxed text-ink-2 italic">${escapeHtml(lead.notiz)}</p>
+            </div>
+            <div class="flex items-start justify-end">${rightHtml}</div>
+          </div>`;
+      }).join('');
+      replaceIcons();
+    }
+
+    function setStatusLine() {
+      if (leadStatus_ === 'idle') leadStatus.textContent = '// ready — 3 leads in the CRM pool';
+      else if (leadStatus_ === 'running') leadStatus.textContent = `analysing lead ${Math.min(revealed+1, LEADS.length)}/${LEADS.length} · extracting buying signals …`;
+      else leadStatus.textContent = 'done in 2.4s — 1× HOT · 1× WARM · 1× COLD ✔';
+      leadStatus.classList.toggle('text-ember', leadStatus_ === 'running');
+    }
+
+    function startAnalysis() {
+      revealed = 0;
+      leadStatus_ = 'running';
+      analyzeBtn.disabled = true;
+      analyzeBtn.innerHTML = '<span data-lucide="loader-circle" class="h-4 w-4 animate-spin"></span> AI is analysing …';
+      analyzeBtn.className = 'inline-flex flex-1 cursor-wait items-center justify-center gap-2 rounded-md border-2 border-ink bg-line px-5 py-3.5 font-display text-[15px] font-semibold text-ink-3 shadow-[4px_4px_0_#22252a]';
+      resetLeads.classList.add('hidden');
+      resetLeads.classList.remove('inline-flex');
+      setStatusLine();
+      renderLeads();
+      replaceIcons();
+      tick();
+    }
+    function tick() {
+      if (leadStatus_ !== 'running') return;
+      if (revealed >= LEADS.length) {
+        setTimeout(() => {
+          leadStatus_ = 'done';
+          analyzeBtn.disabled = false;
+          analyzeBtn.innerHTML = '<span data-lucide="sparkles" class="h-4 w-4"></span> Analyse with AI';
+          analyzeBtn.className = 'inline-flex flex-1 items-center justify-center gap-2 rounded-md border-2 border-ink bg-ember px-5 py-3.5 font-display text-[15px] font-semibold text-cream shadow-[4px_4px_0_#22252a] transition-all hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#22252a] active:translate-y-0 active:shadow-[2px_2px_0_#22252a]';
+          resetLeads.classList.remove('hidden'); resetLeads.classList.add('inline-flex');
+          renderLeads();
+          setStatusLine();
+          replaceIcons();
+          replaceShadows();
+        }, 500);
+        return;
+      }
+      renderLeads();
+      setStatusLine();
+      analysisTimer = setTimeout(() => { revealed++; tick(); }, revealed === 0 ? 900 : 1150);
+    }
+    function resetAnalysis() {
+      clearTimeout(analysisTimer);
+      revealed = 0;
+      leadStatus_ = 'idle';
+      renderLeads();
+      setStatusLine();
+    }
+
+    /* ===========================================================
+       KI-INTERVIEW: simuliertes HR-Gespräch mit Streaming
+       =========================================================== */
+    const CHAT_QA = [
+  {
+    q: "Why are you applying specifically to SmartCRM in Kandel?",
+    a: "### Two reasons:\n\n1. **The data problem in SMEs:** In my 13 years in sales, I often saw small businesses make important decisions based on gut feeling or subjective impressions — because they lacked concrete data. A good CRM solves exactly that problem.\n2. **Kandel is no coincidence:** Every day, I take the train from Kandel to my retraining course, passing right by your company. When we covered CRM in class, I realised that the most interesting employer in the region was right on my daily route.\n\n> I am not looking for just any internship to satisfy the IHK requirements. I want to learn and contribute locally.",
+    ctx: 'motivation.md · local-connection.md',
+  },
+  {
+    q: "Two unfinished degrees — what went wrong?",
+    a: "### Yes, it does not look great on a CV:\n\n- **First degree programme: social sciences at the University of Mannheim:** I was interested in the subject, but quickly realised that the career prospects were not right for me — better to change course immediately than waste time.\n- **Second degree programme: primary and lower-secondary teacher training at the University of Koblenz-Landau:** I wanted to teach and was good at it. Ultimately, I struggled with the rigid, then still paper-based university administration: paper lists and cumbersome organisation. This considerably prolonged my studies. Being in the last cohort under the old examination regulations made things particularly difficult, as fewer and fewer seminars and lectures were offered. But I do not want to make excuses: others succeeded under the same conditions. That paper-based organisation within a bureaucratic system simply did not suit me.\n\n**The point is:** I then spent 13 years in sales and hospitality demonstrating that I take responsibility. After being made redundant by my last employer, the next step was clear: rather than staying in retail, I would finally turn my decades-long enthusiasm for IT into a career.",
+    ctx: 'cv.tex §education · cv.md',
+  },
+  {
+    q: "What do you bring from sales and hospitality to software development?",
+    a: "### Resilience under pressure and endless patience with users\n\n- **Calm at peak capacity:** Whether on busy Sundays in hospitality or during the e-cigarette retail boom, I learned to work accurately under extreme pressure. When cash and large numbers of people are involved, I keep an overview.\n- **A translator between technology and users:** Customers rarely express their needs as ready-made specifications. I know how to listen, identify the real problem and stay calm — even when requirements seem illogical.\n- **Composure:** Colleagues often described my patience with difficult customers as almost limitless. That is certainly useful when working at the interface between a development team and its users.",
+    ctx: 'cv.tex §experience · softskills.yml',
+  },
+  {
+    q: "Why retrain as an IT specialist now, at 47?",
+    a: "### Because my personal interests and career are finally coming together\n\n- **Focus:** This retraining is not a fallback option. It is the logical step towards giving my long-standing passion a professional foundation.\n- **Maturity:** I bring life experience, self-organisation, a reliable work ethic and, not least, a sense of responsibility towards my family — things you cannot learn in a classroom. For you, that means someone who does not need to be introduced to workplace discipline, but who can be relied on from day one.",
+    ctx: 'evolution.log · motivation.md',
+  },
+  {
+    q: "What are your technical limitations and strengths?",
+    a: "### A pragmatist with a genuine understanding of systems\n\n- **My strength:** I have worked extensively with PCs and Linux for many years. When something goes wrong, I do not click helplessly around interfaces. I analyse log files, processes and configuration files to find the cause.\n- **Where I stand:** I am not a senior developer who can write complex enterprise frameworks from memory.\n- **My approach:** I use AI assistance and modern tools pragmatically to understand clean code quickly and build efficient solutions.",
+    ctx: 'cv.tex · self-assessment.yml',
+  },
+    ];
+    const CHAT_GREETING = "### Hello\n\nI am **ronnies-assistant** — trained on the CV, IT evolution, company philosophy and motivation.\n\nChoose one of the suggested HR questions.";
+    const CHAT_CLOSING = "### Interview complete\n\nAll five questions have been answered. But this demo cannot replace the most important part: **a personal conversation**.\n\nYou will find contact details and the button for requesting application documents at the bottom of this page.";
+
+    const chatLog = $('#chat-log');
+    const chatQuestions = $('#chat-questions');
+    let chatBusy = false;
+    const chatScroll = () => { chatLog.scrollTop = chatLog.scrollHeight; };
+
+    function renderMarkdown(markdown) {
+      const inline = (value) => escapeHtml(value)
+        .replace(/`([^`]+)`/g, '<code class="rounded bg-paper px-1.5 py-0.5 font-mono text-[12px] text-ember">$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-ink">$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+      const lines = String(markdown || '').split('\n');
+      let html = '', list = null;
+      const closeList = () => {
+        if (!list) return;
+        html += list === 'ul' ? '</ul>' : '</ol>';
+        list = null;
+      };
+      lines.forEach((raw) => {
+        const line = raw.trim();
+        if (!line) { closeList(); return; }
+        if (line.startsWith('### ')) {
+          closeList();
+          html += '<h4 class="mb-2 mt-0 font-display text-[16px] font-bold tracking-tight text-ink">' + inline(line.slice(4)) + '</h4>';
+          return;
+        }
+        if (line.startsWith('> ')) {
+          closeList();
+          html += '<blockquote class="my-2 border-l-2 border-ember pl-3 italic text-ink-2">' + inline(line.slice(2)) + '</blockquote>';
+          return;
+        }
+        const ordered = line.match(/^\d+\.\s+(.+)/);
+        if (ordered) {
+          if (list !== 'ol') { closeList(); html += '<ol class="my-2 list-decimal space-y-1.5 pl-5">'; list = 'ol'; }
+          html += '<li>' + inline(ordered[1]) + '</li>';
+          return;
+        }
+        if (line.startsWith('- ')) {
+          if (list !== 'ul') { closeList(); html += '<ul class="my-2 list-disc space-y-1.5 pl-5 marker:text-ember">'; list = 'ul'; }
+          html += '<li>' + inline(line.slice(2)) + '</li>';
+          return;
+        }
+        closeList();
+        html += '<p class="my-2 first:mt-0 last:mb-0">' + inline(line) + '</p>';
+      });
+      closeList();
+      return html;
+    }
+
+    function addChatBubble(role) {
+      const wrap = document.createElement('div');
+      wrap.className = 'animate-rise flex gap-3' + (role === 'user' ? ' flex-row-reverse' : '');
+      wrap.innerHTML = role === 'user'
+        ? '<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border-2 border-ink bg-paper font-mono text-[9px] font-bold text-ink">HR</span>' +
+          '<div class="max-w-[82%] rounded-lg rounded-tr-sm border-2 border-ink bg-ember px-4 py-3 text-[14px] leading-relaxed font-medium text-cream shadow-[3px_3px_0_#16314D]"><div data-text></div></div>'
+        : '<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border-2 border-ink bg-ink text-gold"><span data-lucide="sparkles" class="h-4 w-4"></span></span>' +
+          '<div class="max-w-[82%] rounded-lg rounded-tl-sm border-2 border-line bg-card px-4 py-3 text-[14px] leading-relaxed text-ink-2 shadow-[3px_3px_0_#B8CCE2]"><div data-text></div></div>';
+      chatLog.appendChild(wrap);
+      replaceIcons();
+      chatScroll();
+      return wrap.querySelector('[data-text]');
+    }
+
+    function addTyping() {
+      const wrap = document.createElement('div');
+      wrap.className = 'animate-rise flex gap-3';
+      wrap.setAttribute('data-typing', '1');
+      wrap.innerHTML = '<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border-2 border-ink bg-ink text-gold"><span data-lucide="sparkles" class="h-4 w-4"></span></span>' +
+        '<div class="flex items-center gap-1.5 rounded-lg rounded-tl-sm border-2 border-line bg-card px-4 py-3.5 shadow-[3px_3px_0_#B8CCE2]">' +
+        '<span class="typing-dot h-2 w-2 rounded-full bg-ink-3"></span><span class="typing-dot h-2 w-2 rounded-full bg-ink-3"></span><span class="typing-dot h-2 w-2 rounded-full bg-ink-3"></span></div>';
+      chatLog.appendChild(wrap);
+      replaceIcons();
+      chatScroll();
+    }
+
+    function streamAnswer(text, metaText, onDone) {
+      const target = addChatBubble('ai');
+      const bubble = target.parentElement;
+      const tokens = String(text).match(/\S+\s*/g) || [String(text)];
+      let tokenIndex = 0, visible = '', skipped = false, raf = 0, last = 0;
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor ml-0.5 inline-block h-[13px] w-[7px] translate-y-[2px] bg-ember';
+      const finish = () => {
+        cancelAnimationFrame(raf);
+        target.innerHTML = renderMarkdown(text);
+        cursor.remove();
+        bubble.removeEventListener('click', skip);
+        bubble.style.cursor = '';
+        bubble.removeAttribute('title');
+        if (metaText) {
+          const m = document.createElement('p');
+          m.className = 'mt-2.5 border-t border-dashed border-line pt-2 font-mono text-[10px] text-ink-3';
+          m.textContent = metaText;
+          bubble.appendChild(m);
+        }
+        chatScroll();
+        if (onDone) onDone();
+      };
+      const skip = () => { skipped = true; };
+      bubble.addEventListener('click', skip);
+      bubble.title = 'Klicken zum Überspringen';
+      bubble.style.cursor = 'pointer';
+      const tick = (now) => {
+        if (skipped) return finish();
+        if (now - last > 92) {
+          last = now;
+          visible += tokens[tokenIndex] || '';
+          tokenIndex += 1;
+          target.innerHTML = renderMarkdown(visible);
+          target.appendChild(cursor);
+          chatScroll();
+          if (tokenIndex >= tokens.length) return finish();
+        }
+        raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }
+
+    function renderChatQuestions() {
+      chatQuestions.innerHTML = CHAT_QA.map((qa, i) =>
+        '<button data-qi="' + i + '" class="group flex items-start gap-3 rounded-md border-2 border-ink/20 bg-card px-3.5 py-3 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-ink hover:bg-white hover:shadow-[3px_3px_0_#16314D] disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:shadow-none">' +
+          '<span class="mt-0.5 font-mono text-[10px] font-bold text-ember">Q' + String(i + 1).padStart(2, '0') + '</span>' +
+          '<span class="flex-1 text-[13px] leading-snug font-medium text-ink">' + escapeHtml(qa.q) + '</span>' +
+          '<span data-lucide="corner-down-left" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-3 opacity-0 transition-opacity group-hover:opacity-100"></span>' +
+        '</button>').join('');
+      $$('button[data-qi]', chatQuestions).forEach((b) => b.addEventListener('click', () => askChat(+b.dataset.qi, b)));
+      replaceIcons();
+    }
+
+    function askChat(idx, btn) {
+      if (chatBusy) return;
+      chatBusy = true;
+      btn.disabled = true;
+      const qa = CHAT_QA[idx];
+      addChatBubble('user').textContent = qa.q;
+      setTimeout(() => {
+        addTyping();
+        setTimeout(() => {
+          chatLog.querySelector('[data-typing]')?.remove();
+          const latency = (1.8 + Math.random() * 1.4).toFixed(1);
+          streamAnswer(qa.a, '// response in ' + latency + 's · context: ' + qa.ctx, () => {
+            chatBusy = false;
+            const allAsked = $$('button[data-qi]', chatQuestions).every((b) => b.disabled);
+            if (allAsked) {
+              setTimeout(() => {
+                addTyping();
+                setTimeout(() => {
+                  chatLog.querySelector('[data-typing]')?.remove();
+                  streamAnswer(CHAT_CLOSING, '// session complete · 5/5 questions · thank you', null);
+                }, 700);
+              }, 600);
+            }
+          });
+        }, 950 + Math.random() * 650);
+      }, 300);
+    }
+
+    function renderChatGreeting() {
+      addChatBubble('ai').innerHTML = renderMarkdown(CHAT_GREETING);
+    }
+
+    $('#chat-reset').addEventListener('click', () => {
+      chatBusy = false;
+      chatLog.innerHTML = '';
+      renderChatGreeting();
+      renderChatQuestions();
+    });
+
+    renderChatGreeting();
+    renderChatQuestions();
+
+    /* One-Page-Navigation: interne Links scrollen, alle Sektionen bleiben sichtbar. */
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest?.('a[href^="#"]');
+      if (!link) return;
+      const hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      event.preventDefault();
+      history.pushState(null, '', hash);
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      mobileMenu.classList.remove('open');
+      iconMenu.classList.remove('hidden');
+      iconX.classList.add('hidden');
+    });
+
+    window.addEventListener('popstate', () => {
+      const target = location.hash ? document.querySelector(location.hash) : document.querySelector('#top');
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    analyzeBtn.addEventListener('click', startAnalysis);
+    resetLeads.addEventListener('click', resetAnalysis);
+    renderLeads();
+    setStatusLine();
+
+    const ARGUMENTE = [
+      { nr:'01', titel:'Customer focus as a compass', text:'SMARTCRM makes its customers’ daily work easier and more efficient — not more features, but less friction. After more than a decade behind the counter, I know exactly where that friction is.', fit:'I know both sides: the user at the till and the admin in the system.' },
+      { nr:'02', titel:'Partners on equal terms — by SMEs, for SMEs', text:'Not an anonymous software factory, but personal support and long-term collaboration. First-name terms and an open door are not marketing — they reflect a mindset.', fit:'I deeply value this philosophy: collaboration works best when people talk as equals and build solutions together.' },
+      { nr:'03', titel:'Custom solutions rather than rigid off-the-shelf software', text:'The CRM is adapted to the company’s processes, structures and requirements — not the other way around. That takes developers who can listen and configure.', fit:'My Linux journey, from Gentoo USE flags to AUR, has been years of practice in adapting software to the user.' },
+      { nr:'04', titel:'Flexibility & integration', text:'SMARTCRM fits into existing IT environments — ERP, DMS and interfaces. A CRM is powerful when it does not operate in isolation.', fit:'APIs, data formats, system boundaries — these are precisely the topics I am actively pursuing in my retraining.' },
+      { nr:'05', titel:'Hands-on experience: using your own software', text:'People who use their own product every day immediately notice what is not working. Experience from real operations feeds directly into further development.', fit:'Honest software comes from real-world practice. I thoroughly test what I build — on my own machine and under real conditions.' },
+      { nr:'06', titel:'Quality without unnecessary complexity', text:'Simplify processes, reduce effort and stay usable. “Agile, professional, collaborative” also means avoiding over-engineering and building solutions that last.', fit:'No unreadable monster scripts, just clean code: I look forward to harnessing the real power of Python in a professional setting here.' },
+    ];
+    const warumList = $('#warum-list');
+    warumList.innerHTML = ARGUMENTE.map(a => `
+      <div class="group grid grid-cols-[56px_1fr] items-start gap-5 border-b-2 border-line px-2 py-7 transition-all duration-300 hover:border-ember/60 hover:bg-card hover:pl-5 sm:grid-cols-[72px_1fr] sm:px-4 sm:py-8">
+        <span class="font-display text-3xl font-bold text-line transition-colors duration-300 group-hover:text-ember sm:text-4xl">${a.nr}</span>
+        <div>
+          <h3 class="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-ink sm:text-xl">${escapeHtml(a.titel)}<span data-lucide="arrow-up-right" class="h-4 w-4 -translate-x-1 translate-y-1 text-ember opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"></span></h3>
+          <p class="mt-2.5 max-w-xl leading-relaxed text-ink-2">${escapeHtml(a.text)}</p>
+          <p class="mt-3 flex items-start gap-2 font-mono text-[12px] text-ink-2"><span data-lucide="corner-right-down" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ember"></span><span><span class="font-bold text-ember">My connection:</span> ${escapeHtml(a.fit)}</span></p>
+        </div>
+      </div>`).join('');
+    replaceIcons();
+
+    /* ===========================================================
+       LEBENSLAUF (aus cv.tex gespeist — 1:1 übernommen)
+       =========================================================== */
+    const LEBENSLAUF = {
+      stamm: [
+        { k: 'Name',          v: 'Ronnie Kuntz' },
+        { k: 'Address',       v: 'Saarstr. 41a, 76870 Kandel' },
+        { k: 'Phone',       v: '0177/4607020' },
+        { k: 'Email',        v: 'bienwaldcoder@gmail.com', href: 'mailto:bienwaldcoder@gmail.com' },
+        { k: 'Date of birth',  v: '28 April 1979' },
+      ],
+      umschulung: [
+        {
+          titel: 'IHK retraining: IT specialist in application development',
+          ort: 'GFN Karlsruhe',
+          zeit: '2026 – 2028',
+          lauf: true,
+          punkte: [
+            'IHK-certified retraining leading to qualification as an IT specialist in application development',
+            'First 6 months include a shared system administration foundation (AP1 exam preparation)',
+            'Focus: Python, web development (HTML/JS/CSS), databases and interface design',
+          ],
+        },
+      ],
+      erfahrung: [
+        {
+          titel: 'Sales assistant',
+          ort:   'Dampfwerk Kandel',
+          zeit:  '2014 – 2025',
+          lauf:  true,
+          punkte: [
+            'Customer advice, needs analysis and sales administration (including the 2016/17 boom years)',
+            'Resilient under heavy customer traffic and rapid market growth',
+          ],
+        },
+        {
+          titel: 'Restaurant manager',
+          ort:   'Hofmarkt Zapf, Kandel',
+          zeit:  '2013 – 2014',
+          punkte: [
+            'Team leadership, shift planning and prioritisation at peak capacity (busy Sundays in hospitality)',
+            'Responsible for tills, cash handling and customer service with endless patience',
+          ],
+        },
+        {
+          titel: 'Social insurance administrator',
+          ort:   'LVA Rheinland-Pfalz, Speyer',
+          zeit:  '1998 – 1999',
+          punkte: [
+            'Processing social insurance applications and enquiries',
+          ],
+        },
+      ],
+      bildung: [
+        { titel: 'University of Landau-Koblenz',            ort: 'Primary and lower-secondary teacher training (no degree — struggled with the paper-based university system, no excuses)', zeit: '2003 – 2013' },
+        { titel: 'University of Mannheim',                  ort: 'Social sciences (no degree — left after the first semester due to poor career prospects)', zeit: '2002 – 2003' },
+        { titel: 'Speyer-Kolleg (now Pfalz-Kolleg)',    ort: 'Abitur (German university entrance qualification)',                             zeit: '1999 – 2002' },
+        { titel: 'LVA Rheinland-Pfalz, Speyer',           ort: 'Vocational training as a social insurance administrator', zeit: '1995 – 1998' },
+      ],
+      faehigkeiten: [
+        'Outstanding computer skills',
+        'Customer focus and communication skills',
+        'Organisation',
+      ],
+    };
+
+    function renderStammdaten() {
+      $('#stammdaten').innerHTML = LEBENSLAUF.stamm.map(s => {
+        const inner = s.href
+          ? `<a href="${s.href}" class="break-all font-mono text-[12px] leading-relaxed text-ink transition-colors hover:text-ember">${escapeHtml(s.v)}</a>`
+          : `<span class="break-words font-mono text-[12px] leading-relaxed text-ink">${escapeHtml(s.v)}</span>`;
+        return `
+          <div class="grid grid-cols-[88px_minmax(0,1fr)] items-start gap-3 px-5 py-3">
+            <dt class="font-mono text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-3">${escapeHtml(s.k)}</dt>
+            <dd class="min-w-0">${inner}</dd>
+          </div>`;
+      }).join('');
+    }
+
+    function renderErfahrung() {
+      $('#cv-Experience').innerHTML = `
+        <ol class="relative space-y-7">
+          ${LEBENSLAUF.erfahrung.map((e, i) => `
+            <li class="relative pl-7">
+              <span class="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 ${e.lauf ? 'border-ember bg-ember' : 'border-ink bg-card'}">
+                ${e.lauf ? '<span class="h-1.5 w-1.5 rounded-full bg-cream"></span>' : '<span class="h-1.5 w-1.5 rounded-full bg-ink"></span>'}
+              </span>
+              ${i < LEBENSLAUF.erfahrung.length - 1 ? '<span class="absolute left-[7px] top-7 bottom-[-28px] w-[2px] bg-line"></span>' : ''}
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h4 class="font-display text-[17px] font-bold tracking-tight text-ink">${escapeHtml(e.titel)}</h4>
+                <span class="font-mono text-[11px] font-bold tracking-wider ${e.lauf ? 'text-ember' : 'text-ink-3'}">
+                  ${e.lauf ? '● ' : ''}${escapeHtml(e.zeit)}
+                </span>
+              </div>
+              <p class="mt-0.5 font-mono text-[12.5px] text-ink-2">${escapeHtml(e.ort)}</p>
+              <ul class="mt-2.5 space-y-1.5">
+                ${e.punkte.map(p => `
+                  <li class="flex gap-2.5 text-[14px] leading-relaxed text-ink-2">
+                    <span class="mt-2 h-[5px] w-[5px] shrink-0 rounded-full bg-ember"></span>
+                    <span>${escapeHtml(p)}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </li>
+          `).join('')}
+        </ol>`;
+    }
+
+    function renderBildung() {
+      $('#cv-Bildung').innerHTML = `
+        <ol class="space-y-5">
+          ${LEBENSLAUF.bildung.map((b, i) => `
+            <li class="relative grid grid-cols-[24px_1fr] gap-3 ${i < LEBENSLAUF.bildung.length - 1 ? 'pb-5 border-b-2 border-dashed border-line' : ''}">
+              <span class="font-mono text-[11px] font-bold ${b.zeit.includes('ohne Abschluss') ? 'text-ink-3' : 'text-ember'}">
+                ${String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h4 class="font-display text-[16px] font-bold tracking-tight text-ink">${escapeHtml(b.titel)}</h4>
+                  <span class="font-mono text-[11px] font-bold tracking-wider ${b.zeit.includes('ohne Abschluss') ? 'text-ink-3' : 'text-ink-2'}">${escapeHtml(b.zeit)}</span>
+                </div>
+                <p class="mt-0.5 text-[13.5px] text-ink-2">${escapeHtml(b.ort)}</p>
+                ${b.zeit.includes('ohne Abschluss') ? '<p class="mt-1.5 font-mono text-[11px] text-ink-3">— no degree, but plenty of insight into people & systems.</p>' : ''}
+              </div>
+            </li>
+          `).join('')}
+        </ol>`;
+    }
+
+    function renderUmschulung() {
+      $('#cv-Umschulung').innerHTML = `
+        <ol class="relative space-y-7">
+          ${LEBENSLAUF.umschulung.map((e, i) => `
+            <li class="relative pl-7">
+              <span class="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 ${e.lauf ? 'border-ember bg-ember' : 'border-ink bg-card'}">
+                ${e.lauf ? '<span class="h-1.5 w-1.5 rounded-full bg-cream"></span>' : '<span class="h-1.5 w-1.5 rounded-full bg-ink"></span>'}
+              </span>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h4 class="font-display text-[17px] font-bold tracking-tight text-ink">${escapeHtml(e.titel)}</h4>
+                <span class="font-mono text-[11px] font-bold tracking-wider ${e.lauf ? 'text-ember' : 'text-ink-3'}">
+                  ${e.lauf ? '● ' : ''}${escapeHtml(e.zeit)}
+                </span>
+              </div>
+              <p class="mt-0.5 font-mono text-[12.5px] text-ink-2">${escapeHtml(e.ort)}</p>
+              <ul class="mt-2.5 space-y-1.5">
+                ${e.punkte.map(p => `
+                  <li class="flex gap-2.5 text-[14px] leading-relaxed text-ink-2">
+                    <span class="mt-2 h-[5px] w-[5px] shrink-0 rounded-full bg-ember"></span>
+                    <span>${escapeHtml(p)}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </li>
+          `).join('')}
+        </ol>`;
+    }
+
+    renderStammdaten();
+    renderUmschulung();
+    renderErfahrung();
+    renderBildung();
+
+    const KONTAKTE = [
+      { icon:'mail', label:'Email', value:'bienwaldcoder@gmail.com', href:'mailto:bienwaldcoder@gmail.com?subject=Internship%20at%20SMARTCRM' },
+      { icon:'phone', label:'Phone', value:'+49 177 4607020', href:'tel:+491774607020' },
+      { icon:'github', label:'GitHub', value:'github.com/bienwaldcoder', href:'https://github.com/bienwaldcoder' },
+      { icon:'linkedin', label:'LinkedIn', value:'linkedin.com/in/ronnie-kuntz', href:'https://www.linkedin.com/in/ronnie-kuntz-979987369/' },
+    ];
+    const kontakteEl = $('#kontakte');
+    kontakteEl.innerHTML = KONTAKTE.map(k => `
+      <a href="${k.href}" ${k.href.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''} class="group flex items-center gap-5 px-6 py-5 transition-all duration-300 hover:bg-white/5 hover:pl-8">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/5 text-cream/70 transition-colors group-hover:border-ember group-hover:text-ember">
+          <span data-lucide="${k.icon}" class="h-5 w-5"></span>
+        </span>
+        <span class="min-w-0 flex-1">
+          <span class="block font-mono text-[11px] tracking-[0.18em] text-cream/40 uppercase">${k.label}</span>
+          <span class="mt-0.5 block truncate font-display text-[16px] font-semibold text-cream transition-colors group-hover:text-gold sm:text-[17px]">${escapeHtml(k.value)}</span>
+        </span>
+        <span data-lucide="arrow-up-right" class="h-4 w-4 shrink-0 text-cream/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ember"></span>
+      </a>`).join('');
+    replaceIcons();
+  </script>
+<script>
+    // Keep the current section when changing language. Real links also work without JS.
+    document.querySelectorAll('[data-language]').forEach(link => {
+      const updateLink = () => {
+        link.href = (link.dataset.language === 'en' ? './en.html' : './index.html') + location.search + location.hash;
+      };
+      updateLink();
+      window.addEventListener('hashchange', updateLink);
+      link.addEventListener('click', updateLink);
+    });
+  </script>
+</body>
+</html>
